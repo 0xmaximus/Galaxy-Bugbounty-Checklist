@@ -1,12 +1,13 @@
 
-        ##Response manipulation
 
-            Enter correct OTP
-            Intercerp response
-            Enter wrong OTP
-            Intercerp response and chaneg it with correct response
+##1.Response manipulation
 
-        2.OTP bypass by Brute force (no Rate Limit)
+        Enter correct OTP
+        Intercerp response
+        Enter wrong OTP
+        Intercerp response and chaneg it with correct response
+
+##2.OTP bypass by Brute force (no Rate Limit)
 
             Burp Suite intruder
 
