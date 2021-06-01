@@ -57,7 +57,10 @@
 
 ### 6.Session permission
 
-        Using the same session start the flow using your account and the victims account. When reaching the 2FA point with both account, complete the 2FA with your account but do not         access the next part. Instead of that, try to access to the next step with the victims account flow. If the back-end only set a boolean inside your sessions saying that you           have successfully passed the 2FA you will be able to bypass the 2FA of the victim.
+        Using the same session start the flow using your account and the victims account. 
+        When reaching the 2FA point with both account, complete the 2FA with your account but do not access the next part.
+        Instead of that, try to access to the next step with the victims account flow.
+        If the back-end only set a boolean inside your sessions saying that you have successfully passed the 2FA you will be able to bypass the 2FA of the victim.
 
 ### 7.Reusing token
         
@@ -76,3 +79,9 @@
         Burp Suite intruder
 
 ### 6.Change request method
+
+
+<br/><br/><br/>
+
+
+[More good stuff](https://book.hacktricks.xyz/pentesting-web/2fa-bypass)
