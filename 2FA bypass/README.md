@@ -35,31 +35,18 @@
 [https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6](https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6)<br><br/>
 
 
-### 5.Host Header Poisoning
+### 5.X-Forwarded-For
 
-        A common way to implement password reset functionality is to generate a secret token and send an email with a link containing the token. 
-        If an attacker is able to change the host header they can then redirect the token to their website or server which can lead to password reset poisoning
-
-        1) intercept the request and change the Host header to any website.
-        2) Now check your mail if you have received the password reset link and contains bing.com in the url. If it does then its vulnerable to password reset poisoning
-
-        Changing the host directly to any website doesn’t work most of the time. You can try to bypass this with below methods. **
-
-
-        Add X-Forwarded-Host header :
-
-        Host: redacted.com
-
-        X-Forwarded-Host: bing.com
-
-        or :
-
-        Host: bing.com
-
-        X-Forwarded-Host: redacted.com
-
-[https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6](https://medium.com/@abhishake21/password-reset-poisoning-to-ato-and-otp-bypass-1a3b0eba5491)<br><br/>
-
+        add X-Forwarded-For: 127.0.0.1 in request
+        If it did not work try :
+        X-Originating-IP
+        X-Forwarded-Fo
+        X-Remote-IP
+        X-Remote-Addr
+        X-Client-IP
+        X-Host
+        X-Forwared-Host
+        
 
 ### 6.Session permission
 
@@ -88,8 +75,26 @@
         Burp Suite intruder
 
 
-### 6.Change request method
+### 11.CSRF/Clickjacking
 
+        Check if there is a CSRF or a Clickjacking vulnerability to disable the 2FA.
+
+
+### 12.Bypass 2FA arbitrary input
+
+        null 
+        000000
+        0
+        ASADSas
+
+### 13.Change request method
+
+### 14.Not using the phone number or email of the user corresponding to the session.(take the phone number/email from the request)
+        
+        1) Web app is sending a verification code to email before changing some sensitive fields.
+        2) Intercepted the request in burp and found the email parameter (eg: email: victim@gmail.com) in the POST request.
+        3) Changed the email to another gmail (eg: attacker@gmail.com)
+        4) Boom! Got the verification code at attacker@gmail.com
 
 <br/><br/><br/>
 
