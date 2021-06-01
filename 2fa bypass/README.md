@@ -1,4 +1,4 @@
-## 1.Response manipulation
+### 1.Response manipulation
 
         1) Enter correct OTP
         2) Intercerp response
@@ -7,13 +7,13 @@
         
         
 
-## 2.OTP bypass by Brute force (no Rate Limit) **
+### 2.OTP bypass by Brute force (no Rate Limit)
 
         Burp Suite intruder
 
 
 
-## 3.Developer’s Check
+### 3.Developer’s Check
 
         1) Right click on submit button (continue or etc ...)
         2) Inspect element
@@ -24,7 +24,7 @@
 
 
 
-## 4.Host Header Poisoning
+### 4.Host Header Poisoning
 
         A common way to implement password reset functionality is to generate a secret token and send an email with a link containing the token. 
         If an attacker is able to change the host header they can then redirect the token to their website or server which can lead to password reset poisoning
@@ -50,6 +50,6 @@
 [https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6](https://medium.com/@abhishake21/password-reset-poisoning-to-ato-and-otp-bypass-1a3b0eba5491)
 
 
-## 5.Reveal any kind of OTP codes in the response
+### 5.Reveal any kind of OTP codes in the response
 
-## 6.Change request method
+### 6.Change request method
