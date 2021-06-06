@@ -175,9 +175,30 @@ Then you can consider it as vulnerability.
     Host: target.com
     Host: attacker.com
 
-        You can use ngrok server as your attacker server
+    You can use ngrok server as your attacker server
 [https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6](https://medium.com/@abhishake21/password-reset-poisoning-to-ato-and-otp-bypass-1a3b0eba5491)
 
 [https://hackerone.com/reports/226659](https://hackerone.com/reports/226659)<br></br>
 
+### 6.No rate limiting on password reset
 
+Rate limiting is used to control the amount of incoming and outgoing traffic to or from a network.
+Basically, no rate limit means there is no mechanism to protect against requests you made in a short frame of time.
+So try to send lots of requests, if it is not blocking you then you can consider it as vulnerability.
+
+    1) Start the burp suite and intercept the password reset request
+    2) Send to intruder
+    3) Use null payload
+[https://hackerone.com/reports/838572](https://hackerone.com/reports/838572)<br></br>
+### 7.User enumeration via Password reset page
+
+The username enumeration is an activity in which an attacker tries to retrieve valid usernames from a web application.
+You can check this type of bugs on login pages, registration form pages or password reset pages.
+
+
+    1) Go to the password reset page
+    2) Enter a username that exists, there would be no error, and it will be redirected to the login page
+    3) Enter a username that doesn’t exist, there would be an error saying something like ‘user account doesn’t exist’ etc.
+[https://hackerone.com/reports/77067](https://hackerone.com/reports/77067)<br></br>
+
+[More good stuff](https://infosecwriteups.com/all-about-password-reset-vulnerabilities-3bba86ffedc7)
