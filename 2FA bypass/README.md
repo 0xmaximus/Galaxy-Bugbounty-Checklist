@@ -89,14 +89,6 @@
 
 ### 13.Change request method
 
-### 14.Not using the phone number or email of the user corresponding to the session.(take the phone number/email from the request)
-        
-        1) Web app is sending a verification code to email before changing some sensitive fields.
-        2) Intercepted the request in burp and found the email parameter (eg: email: victim@gmail.com) in the POST request.
-        3) Changed the email to another gmail (eg: attacker@gmail.com)
-        4) Boom! Got the verification code at attacker@gmail.com
-
-<br/><br/><br/>
 
 
 [More good stuff](https://book.hacktricks.xyz/pentesting-web/2fa-bypass)
