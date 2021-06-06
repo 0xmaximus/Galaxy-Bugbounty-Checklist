@@ -63,7 +63,7 @@ Then you can consider it as vulnerability.
     2) Intercepted the request in burp and found the email parameter (eg: email: victim@gmail.com) in the POST request.
     3) Changed the email to another gmail (eg: attacker@gmail.com)
     4) Boom! Got the verification code at attacker@gmail.com
-
+<br></br>
 
 ### 2.Password reset token leak via referer
 
