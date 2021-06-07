@@ -7,6 +7,7 @@ Then you can consider it as vulnerability.
 
 
     First scenario:
+    
     1) Go to https://site.com/users/forgotten_password and Send the password reset link to your email.
     2) Go to your email inbox you see reset token like this https://site.com/users/new_password?reset_token=your-reset-tokenand click the link to change password.
     you can use this link many times to reset password.
@@ -29,7 +30,7 @@ Then you can consider it as vulnerability.
     
     
     Third scenario:
-    Proof Of Concept:
+
     1) Send the password reset link to your email.
     2) Don`t open the password link just copy it and paste into any editor.
     3) Open your account.
@@ -46,6 +47,7 @@ Then you can consider it as vulnerability.
 
 
     Fourth scenario:
+    
     1) Attacker visits https://card.starbucks.com.sg/forgetPassword.php and enters his account's email
     2) The link is sent to the attacks email's inbox and he clicks on the link while having a proxy monitor the request(burp)
     3) The attacker then modifies the email to put the victim's email in these 2 requests as shown in the image below 1.PNG (F263235) & 2.PNG (F263234)
@@ -57,6 +59,7 @@ Then you can consider it as vulnerability.
 
 
     Fifth scenario:
+    
     Not using the phone number or email of the user corresponding to the session.(take the phone number/email from the request)
         
     1) Web app is sending a verification code to email before changing some sensitive fields.
