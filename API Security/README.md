@@ -55,3 +55,4 @@
 ### References:
 * https://github.com/inonshk/31-days-of-API-Security-Tips
 * https://book.hacktricks.xyz/pentesting/pentesting-web/api-pentesting
+* https://github.com/HolyBugx/HolyTips/blob/main/Checklist/API%20Security.md
