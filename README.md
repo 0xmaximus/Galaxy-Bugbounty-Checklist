@@ -1,6 +1,6 @@
 # Notes
 
-- Try to make best BugBounty Checklist.
+- Try to make best Bug Bounty Checklist.
 - All checklists come with references.
 - Feel free to contact me maximus0xday [at] gmail if you have any question.
 
