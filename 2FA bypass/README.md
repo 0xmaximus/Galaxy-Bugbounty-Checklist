@@ -1,9 +1,9 @@
 ### 1.Response manipulation </br>
 
     1) Enter correct OTP
-    2) Intercerp response
+    2) Intercept response
     3) Enter wrong OTP
-    4) Intercerp response and chaneg it with correct response
+    4) Intercept response and chaneg it with correct response
 
 
 
