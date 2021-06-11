@@ -102,8 +102,8 @@
                </script>
             </svg>
             ```
-        [https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg)
-        [https://brutelogic.com.br/blog/file-upload-xss/](https://brutelogic.com.br/blog/file-upload-xss/)<br></br>
+            [https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg)<br></br>
+            [https://brutelogic.com.br/blog/file-upload-xss/](https://brutelogic.com.br/blog/file-upload-xss/)<br></br>
         
         - [ ]  Open Redirect
             1. Upload using `.svg` file
