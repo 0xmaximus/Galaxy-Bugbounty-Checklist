@@ -75,7 +75,7 @@
                 <image xlink:href="expect://ls"></image>
             </svg>
             ```
-
+            [https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload](https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload)<br></br>
             - Using excel file
         - [ ]  XSS
             - Set file name `filename="svg onload=alert(document.domain)>"` , `filename="58832_300x300.jpg<svg onload=confirm()>"`
@@ -102,7 +102,9 @@
                </script>
             </svg>
             ```
-
+        [https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg](https://book.hacktricks.xyz/pentesting-web/xss-cross-site-scripting#xss-uploading-files-svg)
+        [https://brutelogic.com.br/blog/file-upload-xss/](https://brutelogic.com.br/blog/file-upload-xss/)<br></br>
+        
         - [ ]  Open Redirect
             1. Upload using `.svg` file
 
@@ -153,3 +155,4 @@
 
 ### References:
 * https://github.com/HolyBugx/HolyTips/blob/main/Checklist/File%20Upload.md
+* https://book.hacktricks.xyz/pentesting-web/file-upload
