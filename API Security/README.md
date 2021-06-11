@@ -49,3 +49,9 @@
         ```
 
         - If XML is supported, check for XXE
+
+
+
+### References:
+* https://github.com/inonshk/31-days-of-API-Security-Tips
+* https://book.hacktricks.xyz/pentesting/pentesting-web/api-pentesting
