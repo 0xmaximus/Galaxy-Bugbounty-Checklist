@@ -56,9 +56,10 @@
           </br> 
         - [ ] Magic Number Bypass
             > Magic numbers are the first bits of a file which uniquely identify the type of file.</br>
-            > it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.</br>
+            > it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.</br>[https://en.wikipedia.org/wiki/List_of_file_signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)</br>
              These bytes can be used by the system to “differentiate between and recognize different files” without a file extension.</br>
              Magic numbers (File signatures) are typically not visible to the user, but, can be seen by using a hex editor or by using the ‘xxd’ command to read the file.
+	
             ```bash
             └─$ xxd image.jpeg | head
             ```
@@ -83,6 +84,8 @@
             └─$ file shell.jpg.pHp
             shell2.png.pHp: JPEG image data
             ```
+	    > How to find out uploader is checking file signature or its checking file extention and content-type?
+	    > > Lets try to change the our shell extension to .jpg and try to upload it. It still fails. So we can conclude that it is not checking the file name extension. The same happens if we change the content-Type to jpg and file name as it is. If its still fails we can understand that uploader is checking file signature.
         - - - -
       
     - Vulnerabilities
@@ -127,7 +130,7 @@
                 <image xlink:href="expect://ls"></image>
             </svg>
             ```
-            [https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload](https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload)<br></br>
+            [https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload](https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload)
             - Using excel file
         - [ ]  XSS
             - Set file name `filename="svg onload=alert(document.domain)>"` , `filename="58832_300x300.jpg<svg onload=confirm()>"`
@@ -200,10 +203,10 @@
             $allowed_image_types = false;
             $image_content = file_get_contents( 'image.png' );
             $allowed_image_types = array(
-	            'jpeg' => "\xFF\xD8\xFF",
-	            'gif' => "GIF",
+	        'jpeg' => "\xFF\xD8\xFF",
+	        'gif' => "GIF",
             	'png' => "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a",
-	            'bmp' => "BM",
+	        'bmp' => "BM",
             	'psd' => "8BPS",
             	'swf' => "FWS",
             );
