@@ -198,13 +198,14 @@
             exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' pic.jpg
             ```
         - - - -            
-    - # My Full Scanario For Bypass:
+    - # My Full Scanario For Check Uploaders:
 
         -   Just uploading .php file instead of jpg file.
         -   Trying double extensions to bypass and upload php file pic.jpg.php or pic.php.jpg
         -   Changing Content-type filtering i.e., changing Content-Type: txt/php to image/jpg
         -   Tried Case sensitives — pic.PhP also tried pic.php5, pHP5.
         -   Tried special characters to bypass pic.php%00 , pic.php%0a, pic.php%00
+        -   Tried comment php code in jpg file.
         -   Basically every file extension has its own magic number, and I took a php-reverse-shell.php file and using hex editor I added the magic number of jpeg i.e., FF D8 FF E0 at start of the php file using the hex tool.
         - - - -
     - # Vulnerable uploader code for mgic bytes:
