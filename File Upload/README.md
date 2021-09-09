@@ -54,7 +54,7 @@
             GIF89a; <?php system($_GET['cmd']); ?>
             ```
           </br> 
-        - [ ] Magic Number Bypass
+        - [ ] Magic Numbers Bypass
             - Magic numbers are the first bits of a file which uniquely identify the type of file.</br>
             - it can be helpful to look for file format signatures and inferring how the application is using them based on these signatures, as well as how these formats may be abused to provoke undefined behavior within the application.</br>[https://en.wikipedia.org/wiki/List_of_file_signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)</br>
             - These bytes can be used by the system to “differentiate between and recognize different files” without a file extension.</br>
