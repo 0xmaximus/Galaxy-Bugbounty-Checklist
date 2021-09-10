@@ -75,7 +75,7 @@ top.location.href='reflectedhere';
 
 - I run into filters trying to prevent third party redirects all the time. However before even thinking about trying to bypass the filter, one of the most common issues researchers run into when testing login flows chained with an open url redirect is not encoding the values correctly. For example, `https://example.com/login?return=https://mysite.com/`.
 
-The website/browser may get confused with how the return parameter is formatted so it always good to try just normal encoding, and failing that, double encoding. See below for an example:
+- The website/browser may get confused with how the return parameter is formatted so it always good to try just normal encoding, and failing that, double encoding. See below for an example:
 
 ```javascript
 https://example.com/login?return=https://example.com/?returnurl=https%3A%2F%2Fwww.google.com%2F
