@@ -167,6 +167,29 @@ gopher://
         > Note that if you use payload in the address bar, you need to do url encoding again. <br></br>
     
 ## Interacting With Internal Service
-> The real power of SSRF is where the attacker can interact with the internal application/service/network in Local Network, imagine if there is a vulnerable application/service in the internal network where the attacker cannot reach the application/service because it is on a different network, but if there is SSRF vulnerability the Attacker might be able to do that.
+- The real power of SSRF is where the attacker can interact with the internal application/service/network in Local Network, imagine if there is a vulnerable application/service in the internal network where the attacker cannot reach the application/service because it is on a different network, but if there is SSRF vulnerability the Attacker might be able to do that.
 
-![image](https://user-images.githubusercontent.com/63053441/132804984-22a8570f-98fb-4f11-a9e3-336b865ba37c.png)
+    ![image](https://user-images.githubusercontent.com/63053441/132804984-22a8570f-98fb-4f11-a9e3-336b865ba37c.png)
+
+- If the requestster supports the use of the `gopher://` protocol or there may be a CRLF Injection vulnerability, it will allow attackers to interact with various internal services such as `SMTP`, `MySQL`, `Redis`, `Memcached` and so on. Then querying these services to give the desired command, for example, to read local files or even to get RCE.
+- Gopher protocol is a common and commonly used protocol on the Internet before the emergence of HTTP protocol, but now gopher protocol has been used less and less. Gopher protocol can be said to be the panacea of SSRF. Using this protocol, you can attack Redis, Mysql, FastCGI, Ftp and so on in the intranet, and also send GET and POST requests. This undoubtedly greatly broadens the attack area of SSRF.
+
+- I understand that it should be very flexible and widely used in some scenarios. By constructing the packets we want to send and using gopher protocol to send, we can achieve the requests we want (I'm talking nonsense, I don't know).
+
+- For example, gopher is used to implement GET request, POST request, redis in Intranet, unauthorized access to MySQL (and various relational databases), MongoDB, Memcache, etc
+
+        * Gopher's default port is 70. If no port is specified, for example gopher://127.0.0.1/_test is sent to port 70 by default
+        * It's here_ It's a data connection format, not necessarily_ , any other character is OK. For example, 1 is used as the connection character here:
+        root@kali:~# curl gopher://127.0.0.1/1test
+        
+- Gopher will send the following data part to the corresponding port. The data can be strings or other data request packets, such as GET, POST request, redis, mysql unauthorized access, etc. at the same time, the data part must be url encoded, so that gopher protocol can correctly parse.
+
+[Exploiting Redis](https://www.agarri.fr/blog/archives/2014/09/11/trying_to_hack_redis_via_http_requests/index.html)
+[Exploiting Redis](https://maxchadwick.xyz/blog/ssrf-exploits-against-redis)
+[Exploiting Redis](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/)
+[Exploiting Redis](https://www.fatalerrors.org/a/learning-ssrf-through-ctfhub.html)
+[Exploiting Redis](https://www.fatalerrors.org/a/0t511To.html)
+
+[Exploiting MySQL](https://programming.vip/docs/ssrf-uses-gopher-to-attack-mysql-and-intranet.html)
+
+
