@@ -150,21 +150,21 @@ gopher://
         ```
     - Gopher is classified as a universal protocol, through gopher the attacker can do smuggling to other protocols, besides that gopher also supports the use of newline (\r\n) so     that even though the requestster is not vulnerable to CRLF Injection, the attacker can still perform CRLF Injection because Gopher does support multiline requests.<br></br>
    
-     > Gopher protocol can do many things, especially in SSRF. This protocol can be used to attack FTP, Telnet, Redis, Memcache, GET and POST requests in the intranet.
-     Gopher protocol is a common and commonly used protocol on the Internet before the emergence of http protocol. In ssrf, gopher protocol is often used to construct post packets      to attack intranet applications. In fact, the construction method is very simple, similar to http protocol.
-   
-     > The difference is that the gopher protocol does not have a default port, so you need to specify the web port, and you need to specify the post method. Use %0d%0a for            carriage return.
+         > Gopher protocol can do many things, especially in SSRF. This protocol can be used to attack FTP, Telnet, Redis, Memcache, GET and POST requests in the intranet.
+         Gopher protocol is a common and commonly used protocol on the Internet before the emergence of http protocol. In ssrf, gopher protocol is often used to construct post packets      to attack intranet applications. In fact, the construction method is very simple, similar to http protocol.
 
-        * Note that the & separator between the post parameters is also url encoded
-        * Basic agreement format: URL:gopher ://<host>:<port>/<gopher-path>_ Followed by TCP data flow
+         > The difference is that the gopher protocol does not have a default port, so you need to specify the web port, and you need to specify the post method. Use %0d%0a for            carriage return.
 
-Some small details about gopher's utilization: 
-![image](https://programming.vip/images/doc/ec4fca7c6afcd72a91cc2beff6bfb822.jpg)
-    
-   - Curl -v checks whether curl supports gopher protocol. nc finds that the data is wrapped, but only ello is displayed, while h disappears. Therefore, we need to add in before       we construct gopher here_ To act as the missing character:
-   
-![image](https://programming.vip/images/doc/ee05a9e82d0606f39705edf1925ef725.jpg)
-> Note that if you use payload in the address bar, you need to do url encoding again. 
+            * Note that the & separator between the post parameters is also url encoded
+            * Basic agreement format: URL:gopher ://<host>:<port>/<gopher-path>_ Followed by TCP data flow
+
+        Some small details about gopher's utilization: 
+        ![image](https://programming.vip/images/doc/ec4fca7c6afcd72a91cc2beff6bfb822.jpg)
+
+           - Curl -v checks whether curl supports gopher protocol. nc finds that the data is wrapped, but only ello is displayed, while h disappears. Therefore, we need to add in before       we construct gopher here_ To act as the missing character:
+
+        ![image](https://programming.vip/images/doc/ee05a9e82d0606f39705edf1925ef725.jpg)
+        > Note that if you use payload in the address bar, you need to do url encoding again. <br></br>
     
 ## Interacting With Internal Service
 > The real power of SSRF is where the attacker can interact with the internal application/service/network in Local Network, imagine if there is a vulnerable application/service in the internal network where the attacker cannot reach the application/service because it is on a different network, but if there is SSRF vulnerability the Attacker might be able to do that.
