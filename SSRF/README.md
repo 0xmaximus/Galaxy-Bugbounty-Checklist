@@ -183,13 +183,12 @@ gopher://
         root@kali:~# curl gopher://127.0.0.1/1test
         
 - Gopher will send the following data part to the corresponding port. The data can be strings or other data request packets, such as GET, POST request, redis, mysql unauthorized access, etc. at the same time, the data part must be url encoded, so that gopher protocol can correctly parse.
+- For more details you have this links:<br></br>
+    [Exploiting Redis](https://www.agarri.fr/blog/archives/2014/09/11/trying_to_hack_redis_via_http_requests/index.html)<br></br>
+    [Exploiting Redis](https://maxchadwick.xyz/blog/ssrf-exploits-against-redis)<br></br>
+    [Exploiting Redis](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/)<br></br>
+    [Exploiting Redis](https://www.fatalerrors.org/a/learning-ssrf-through-ctfhub.html)<br></br>
+    [Exploiting Redis](https://www.fatalerrors.org/a/0t511To.html)<br></br>
+    [Exploiting MySQL](https://programming.vip/docs/ssrf-uses-gopher-to-attack-mysql-and-intranet.html)<br></br>
 
-[Exploiting Redis](https://www.agarri.fr/blog/archives/2014/09/11/trying_to_hack_redis_via_http_requests/index.html)
-[Exploiting Redis](https://maxchadwick.xyz/blog/ssrf-exploits-against-redis)
-[Exploiting Redis](https://smarx.com/posts/2020/09/ssrf-to-redis-ctf-solution/)
-[Exploiting Redis](https://www.fatalerrors.org/a/learning-ssrf-through-ctfhub.html)
-[Exploiting Redis](https://www.fatalerrors.org/a/0t511To.html)
-
-[Exploiting MySQL](https://programming.vip/docs/ssrf-uses-gopher-to-attack-mysql-and-intranet.html)
-
-
+## Cloud Metadata
