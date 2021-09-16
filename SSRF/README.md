@@ -51,7 +51,8 @@ vulnerablesite.com/file/?url=http://0000::1:port
 ```
 - If there is a Blind SSRF to find out whether the port is open or closed, you can pay attention to Content-length, Response Time, or HTTP Status Code.
 - The indicator to find out, of course, is not just the three elements mentioned above, there could be “unusual” elements that appear during port scanning because it depends on what technology and what environment the web application uses.
-- The indicator to find out, of course, is not just the three elements mentioned above, there could be “unusual” elements that appear during port scanning because it depends on what technology and what environment the web application uses.
+
+![E5stKXAWEAM5fo2](https://user-images.githubusercontent.com/63053441/133578001-6f61210e-c41a-4246-ac81-8433c206f41c.jpg)
 
 ## Local File Read
 > In the context of SSRF accessing/reading Local Files can only use the `file:///` protocol, but not all requeststers support the `file:///` protocol. Besides, there may be a hard filter/blacklist that does not allow the use of that protocol, but still, it depends on the behavior of the requeststers.
