@@ -20,6 +20,7 @@ Still adding them below
 * [WpScan](https://github.com/wpscanteam/wpscan)
 * [WPrecon](https://github.com/blackcrw/wprecon)
 * [cms-checker](https://github.com/oways/cms-checker)
+* [https://wpsec.com](https://wpsec.com/)
 
 # xmlrpc.php 
 This is one of the common issue on wordpress. To get some bucks with this misconfiguration you must have to exploit it fully, and have to show the impact properly as well.
