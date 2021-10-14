@@ -317,10 +317,11 @@ If you have a Wordpreess target, dont forget to enumerate the plugins on "/wp-co
 Read the stable tag, and try to find CVEs or exploits for that versions.
 
 Alse you can use:</br>
-`grep all "wp-content/plugins/" from html`
+`grep all "wp-content/plugins/" from html`<br></br>
+You cant find exploits here:</br>
+https://github.com/Mad-robot/wordpress-exploits
 
 
-<br></br>
 # Reference
 Twitters:</br>
 @jae_hak99
