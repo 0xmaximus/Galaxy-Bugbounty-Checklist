@@ -309,6 +309,7 @@ https://github.com/iamj0ker/bypass-403
 
 
 # Reference
+Twitters:</br>
 @jae_hak99
 @minometidji
 @sw33tLie
@@ -322,7 +323,7 @@ https://github.com/iamj0ker/bypass-403
 @EkinBayer4
 @3XS0
 @CyberWarship
-@vxer0dayz
-https://github.com/daffainfo/AllAboutBugBounty
-https://github.com/KathanP19/HowToHunt
+@vxer0dayz</br>
+https://github.com/daffainfo/AllAboutBugBounty</br>
+https://github.com/KathanP19/HowToHunt</br>
 https://malavsharma.medium.com/wordpress-xmlrpc-php-my-first-resolved-report-bee438f35ad8
