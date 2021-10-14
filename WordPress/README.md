@@ -34,7 +34,7 @@ On a typical WordPress install, all you need to do is add /login/ or /admin/ to 
 
 For example:
 
-www.example.com/admin/
+www.example.com/admin/</br>
 www.example.com/login/
 
 If for some reason, your WordPress login URL is not working properly, then you can easily access the WordPress login page by going to this URL:
@@ -43,7 +43,7 @@ www.example.com/wp-login.php
 
 Or you can directly access your admin area by entering the website URL like this:
 
-www.example.com/admin/
+www.example.com/admin/</br>
 www.example.com/wp-admin/
 
 ### Bypass
