@@ -2,16 +2,16 @@
 Here I will try my best to mention all common security misconfigurations for Wordpress I saw before or officially referenced. I will be attaching all poc and reference as well
 
 # Index
-* Wordpress Detection https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#wordpress-detection
-* General Scan Tool
-* Admin Panel
-* CVE-2018-6389
-* xmlrpc.php
-* Denial of Service via Cronjob
-* Denial of Service via load-scripts.php (CVE-2018-6389)
-* WP User Enumeration
-* Sensitive files exposed
-* Bypass 403
+* [Wordpress Detection](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#wordpress-detection)
+* [General Scan Tool](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#geneal-scan-tool)
+* [Admin Panel](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Admin Panel)
+* [CVE-2018-6389](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#CVE-2018-6389)
+* [xmlrpc.php](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#xmlrpc.php)
+* [Denial of Service via Cronjob](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Denial of Service via Cronjob)
+* [Denial of Service via load-scripts.php (CVE-2018-6389)](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Denial of Service via load-scripts.php (CVE-2018-6389))
+* [WP User Enumeration](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#WP User Enumeration)
+* [Sensitive files exposed](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Sensitive files exposed)
+* [Bypass 403](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Bypass 403)
 
 
 # Wordpress Detection
