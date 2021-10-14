@@ -2,7 +2,7 @@
 Here I will try my best to mention all common security misconfigurations for Wordpress I saw before or officially referenced. I will be attaching all poc and reference as well
 
 # Index
-* Wordpress Detection
+* Wordpress Detection https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#wordpress-detection
 * General Scan Tool
 * Admin Panel
 * CVE-2018-6389
