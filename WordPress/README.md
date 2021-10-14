@@ -307,3 +307,22 @@ X-Rewrite-Url: wp-login.php
 https://github.com/yunemse48/403bypasser
 https://github.com/iamj0ker/bypass-403
 
+
+# Reference
+@jae_hak99
+@minometidji
+@sw33tLie
+@Jester0x01
+@daffainfo
+@SalimAlk15
+@xalerafera
+@gopalsamy_ru
+@16yashpatel
+@fuxsocy_py
+@EkinBayer4
+@3XS0
+@CyberWarship
+@vxer0dayz
+https://github.com/daffainfo/AllAboutBugBounty
+https://github.com/KathanP19/HowToHunt
+https://malavsharma.medium.com/wordpress-xmlrpc-php-my-first-resolved-report-bee438f35ad8
