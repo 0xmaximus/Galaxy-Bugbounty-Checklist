@@ -318,7 +318,7 @@ Read the stable tag, and try to find CVEs or exploits for that versions.
 
 Alse you can use:</br>
 `grep all "wp-content/plugins/" from html`<br></br>
-You cant find exploits here:</br>
+You cant find some common exploits here:</br>
 https://github.com/Mad-robot/wordpress-exploits
 
 
