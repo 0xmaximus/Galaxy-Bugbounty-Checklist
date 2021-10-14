@@ -48,7 +48,7 @@ www.example.com/wp-admin/
 
 ### Bypass
 * If you cant find admin panel Just go to /wp-admin/install.php and you'll find out where the login page has moved!
-* If you got 403 try methods that will explain in "Bypass 403 pages".
+* If you got 403 try methods that will explain in "[Bypass 403 pages](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#bypass-403)".
 
 
 # CVE-2018-6389
