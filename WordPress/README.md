@@ -324,6 +324,6 @@ Twitters:</br>
 @3XS0
 @CyberWarship
 @vxer0dayz</br>
-https://github.com/daffainfo/AllAboutBugBounty</br>
+</br>https://github.com/daffainfo/AllAboutBugBounty</br>
 https://github.com/KathanP19/HowToHunt</br>
 https://malavsharma.medium.com/wordpress-xmlrpc-php-my-first-resolved-report-bee438f35ad8
