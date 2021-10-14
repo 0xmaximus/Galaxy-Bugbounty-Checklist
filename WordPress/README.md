@@ -12,6 +12,7 @@ Here I will try my best to mention all common security misconfigurations for Wor
 * [WP User Enumeration](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#wp-user-enumeration)
 * [Sensitive files exposed](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#sensitive-files-exposed)
 * [Bypass 403](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Bypass-403)
+* [Enumerating plugins]
 
 
 # Wordpress Detection
@@ -26,6 +27,7 @@ Still adding them below
 * [WPrecon](https://github.com/blackcrw/wprecon)
 * [cms-checker](https://github.com/oways/cms-checker)
 * [https://wpsec.com](https://wpsec.com/)
+* [For more see this](https://www.infosecmatter.com/cms-vulnerability-scanners-for-wordpress-joomla-drupal-moodle-typo3/)
 
 
 # Admin Panel
@@ -306,6 +308,14 @@ X-Rewrite-Url: wp-login.php
 ### Tools
 https://github.com/yunemse48/403bypasser
 https://github.com/iamj0ker/bypass-403
+
+
+# Enumerating plugins
+If you have a Wordpreess target, dont forget to enumerate the plugins on "/wp-content/plugins/FUZZ/readme.txt".
+Read the stable tag, and try to find CVEs or exploits for that versions.
+
+Alse you can use:</br>
+grep all "wp-content/plugins/" from html.
 
 
 # Reference
