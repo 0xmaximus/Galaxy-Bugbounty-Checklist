@@ -12,7 +12,7 @@ Here I will try my best to mention all common security misconfigurations for Wor
 * [WP User Enumeration](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#wp-user-enumeration)
 * [Sensitive files exposed](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#sensitive-files-exposed)
 * [Bypass 403](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Bypass-403)
-* [Enumerating plugins]
+* [Enumerating plugins](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#enumerating-plugins)
 
 
 # Wordpress Detection
@@ -310,12 +310,14 @@ https://github.com/yunemse48/403bypasser
 https://github.com/iamj0ker/bypass-403
 
 
+
 # Enumerating plugins
 If you have a Wordpreess target, dont forget to enumerate the plugins on "/wp-content/plugins/FUZZ/readme.txt".
 Read the stable tag, and try to find CVEs or exploits for that versions.
 
 Alse you can use:</br>
 grep all "wp-content/plugins/" from html.
+
 
 
 # Reference
