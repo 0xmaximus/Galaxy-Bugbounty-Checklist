@@ -36,17 +36,17 @@ On a typical WordPress install, all you need to do is add /login/ or /admin/ to 
 
 For example:
 
-www.example.com/admin/</br>
-www.example.com/login/
+`www.example.com/admin/`</br>
+`www.example.com/login/`
 
 If for some reason, your WordPress login URL is not working properly, then you can easily access the WordPress login page by going to this URL:
 
-www.example.com/wp-login.php
+`www.example.com/wp-login.php`
 
 Or you can directly access your admin area by entering the website URL like this:
 
-www.example.com/admin/</br>
-www.example.com/wp-admin/
+`www.example.com/admin/`</br>
+`www.example.com/wp-admin/`
 
 ### Bypass
 * If you cant find admin panel Just go to /wp-admin/install.php and you'll find out where the login page has moved!
@@ -184,10 +184,11 @@ This issue will only acceptable when target website is hiding their current user
     - visit site.com/wp-json/wp/v2/users/
     - You will see json data with user info in response
     - if you got 403 error you can use this bypass </br>
-    ![wpb](https://user-images.githubusercontent.com/63053441/137262896-0d59a62d-c386-4009-af84-4266b72428b6.png)<br></br>
-    
-- try http://target.com/?rest_route=/wp/v2/users
+    ![wpb](https://user-images.githubusercontent.com/63053441/137262896-0d59a62d-c386-4009-af84-4266b72428b6.png)
+    - try `http://target.com/?rest_route=/wp/v2/users`
+
 - /?author=1
+    - `http://target.com/?author=1`
     - Increment the number to get more
 - User enum with admin panel
     - If you have access to admin panell you can get valid usernames </br>
@@ -316,7 +317,7 @@ If you have a Wordpreess target, dont forget to enumerate the plugins on "/wp-co
 Read the stable tag, and try to find CVEs or exploits for that versions.
 
 Alse you can use:</br>
-grep all "wp-content/plugins/" from html.
+`grep all "wp-content/plugins/" from html`
 
 
 <br></br>
