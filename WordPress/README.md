@@ -307,7 +307,7 @@ X-Rewrite-Url: wp-login.php
     .json
     ```
 ### Tools
-https://github.com/yunemse48/403bypasser
+https://github.com/yunemse48/403bypasser</br>
 https://github.com/iamj0ker/bypass-403
 
 
