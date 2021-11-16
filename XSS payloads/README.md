@@ -242,8 +242,9 @@ rodolfoassis | ModSecurity CRS 3.2.0 PL1
 
 ### 7.Some good stuffs:
 ```js
-https://github.com/Walidhossain010/WAF-bypass-xss-payloads   
+https://github.com/Walidhossain010/WAF-bypass-xss-payloads
+https://aswingovind.medium.com/content-spoofing-yes-html-injection-39611d9a4057
 ```
 
    
-https://aswingovind.medium.com/content-spoofing-yes-html-injection-39611d9a4057
+
