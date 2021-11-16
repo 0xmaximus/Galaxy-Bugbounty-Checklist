@@ -217,4 +217,19 @@ You can check this type of bugs on login pages, registration form pages or passw
     3) Enter a username that doesn’t exist, there would be an error saying something like ‘user account doesn’t exist’ etc.
 [https://hackerone.com/reports/77067](https://hackerone.com/reports/77067)<br></br>
 
+
+### 8.User enumeration via Password reset page
+
+HTML Injection which is also referred in Content spoofing, also referred to as content injection, or “arbitrary text injection” or virtual defacement
+
+    The steps were as follow:
+
+    Open the Create New Account Page of the application, enter your email id and Password.
+    In the First Name parameter, HTML Injection payload
+
+    ( <a href="attacker.com"><h1>Please click here to login to your account<h1></a> ) is inserted
+    
+   ![image](https://user-images.githubusercontent.com/63053441/142048118-5b1b3c07-418b-4e1a-9a10-96ee16aa6d21.png)
+   ![image](https://user-images.githubusercontent.com/63053441/142048901-41083b04-d1bf-4409-ad4b-c00186d870e1.png)
+
 [More good stuff](https://infosecwriteups.com/all-about-password-reset-vulnerabilities-3bba86ffedc7)
