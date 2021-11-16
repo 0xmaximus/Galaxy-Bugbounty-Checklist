@@ -231,5 +231,5 @@ HTML Injection which is also referred in Content spoofing, also referred to as c
     
    ![image](https://user-images.githubusercontent.com/63053441/142048118-5b1b3c07-418b-4e1a-9a10-96ee16aa6d21.png)
    ![image](https://user-images.githubusercontent.com/63053441/142048901-41083b04-d1bf-4409-ad4b-c00186d870e1.png)
-   https://hackerone.com/reports/111094
+   https://hackerone.com/reports/111094 </br>
 [More good stuff](https://infosecwriteups.com/all-about-password-reset-vulnerabilities-3bba86ffedc7)
