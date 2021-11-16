@@ -190,6 +190,8 @@ If an attacker is able to change the host header they can then redirect the toke
     Host: attacker.com
 
     You can use ngrok server as your attacker server
+![Capture](https://user-images.githubusercontent.com/63053441/142035434-51e8731e-8667-4db4-8989-253e40a37e82.PNG)
+
 [https://shahjerry33.medium.com/otp-bypass-developers-check-5786885d55c6](https://medium.com/@abhishake21/password-reset-poisoning-to-ato-and-otp-bypass-1a3b0eba5491)
 
 [https://hackerone.com/reports/226659](https://hackerone.com/reports/226659)<br></br>
