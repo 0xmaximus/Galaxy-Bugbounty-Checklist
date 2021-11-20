@@ -218,7 +218,7 @@ You can check this type of bugs on login pages, registration form pages or passw
 [https://hackerone.com/reports/77067](https://hackerone.com/reports/77067)<br></br>
 
 
-### 8.User enumeration via Password reset page
+### 8.HTML Injection in Password reset page
 
 HTML Injection which is also referred in Content spoofing, also referred to as content injection, or “arbitrary text injection” or virtual defacement
 
