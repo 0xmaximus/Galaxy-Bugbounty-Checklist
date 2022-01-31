@@ -1,5 +1,6 @@
 #Slow HTTP GET/POST Vulnerability
-slowhttptest -c 10000 -H -g -o slowhttp -i 1 -r 2000 -t GET -u https://example.com -x 2400 -p 3
+
+`slowhttptest -c 10000 -H -g -o slowhttp -i 1 -r 2000 -t GET -u https://example.com -x 2400 -p 3`
 
 #Big entity
 ```
