@@ -27,9 +27,27 @@ Then you can consider it as vulnerability.
     5) After changing the password, use the password reset link that was captured in step 1.
     6) You'll see the password reset link is not expired even after password change.
 [https://hackerone.com/reports/283550](https://hackerone.com/reports/283550)<br></br>
-    
-    
+
     Third scenario:
+    
+    1) Create a account or use existing one.
+    2) Confirm Your email address.
+    3) Now log out from your account and request for password reset code for your account .
+    4) Don't use the code that has been sent to your email address.
+    5) In new browser log in back to your account.
+    6) Go to account setting and change your password .
+    7) Now go to email and check the password reset code that we requested in step 3.
+    8) Change Your password using that reset password code .
+    9) You can see that your password has been changed
+    The reset code is not expired after changing the password
+    
+    Impact:
+    If the site has a token issue, The result is the reset password token in the Step 3 is still usable and did not expire yet.
+    If the victims opens his mail in cybercafe or in attackers device and forgot to log out then attacker can access that system and can reset the password of his account.    
+[https://hackerone.com/reports/948345](https://hackerone.com/reports/948345)<br></br>
+
+    
+    Fourth scenario:
 
     1) Send the password reset link to your email.
     2) Don`t open the password link just copy it and paste into any editor.
@@ -46,7 +64,7 @@ Then you can consider it as vulnerability.
 [https://hackerone.com/reports/685007](https://hackerone.com/reports/685007)<br></br>
 
 
-    Fourth scenario:
+    Fifth scenario:
     
     1) Attacker visits https://card.starbucks.com.sg/forgetPassword.php and enters his account's email
     2) The link is sent to the attacks email's inbox and he clicks on the link while having a proxy monitor the request(burp)
@@ -58,7 +76,7 @@ Then you can consider it as vulnerability.
 [https://hackerone.com/reports/315879](https://hackerone.com/reports/315879)<br></br>
 
 
-    Fifth scenario:
+    sixth scenario:
     
     Not using the phone number or email of the user corresponding to the session.(take the phone number/email from the request)
         
