@@ -69,3 +69,5 @@ content-type: application/json
 cache-control: no-cache, private
 ```
 In the above mentioned polluted request only the first occurrence (q=Hello) is checked and the last occurrence (q=”><svg/onload=alert(1)>) is not sanitized which means it will trigger XSS.
+
+
