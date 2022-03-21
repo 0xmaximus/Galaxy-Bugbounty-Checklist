@@ -1,3 +1,14 @@
+## Anatomy of Parameter Pollution :
+The manipulation of the value of each parameter depends on how each web technology is parsing these parameters. Some web technologies parse the first or the last occurrence of the parameter, some concatenate all the inputs and others will create an array of parameters.
+
+<p align="center">
+  <img 
+    width="600"
+    height="700"
+    src="https://user-images.githubusercontent.com/63053441/159308061-dd00ec1d-bc07-406f-9e19-7a654ff4af54.png"
+  >
+</p>
+
 ## 1 - All occurrences of specific parameter :
   This means that if we parse the same name parameters like q=hello&q=”><svg/onload=alert(1)> the check will be performed on both the parameters because they have the same name. In All occurrences, the barrier is if the back-end logic is configured to allow a specific parameter only 1 time then appending another parameter (q=hello&q=”><svg/onload=alert(1)>) of same name will give you an error.
 
@@ -102,7 +113,7 @@ cache-control: no-cache, private
 ```
 In the above mentioned polluted request only the last occurrence (q=Hello) is checked and the first occurrence (q="><svg/onload=alert(1)>) is not sanitized which means it will trigger XSS.
 
-## 3 - Becomes an array :
+## 4 - Becomes an array :
   Becomes an array means whatever the input is sent from the client side the server parsed it into an array and displays it. Which means the parameter which you are polluting has an array as datatype, which is also the most vulnerable.
   
 Request :
@@ -147,3 +158,4 @@ cache-control: no-cache, private
 
 }
 ```
+## Refrences: https://shahjerry33.medium.com/parameter-pollution-zero-day-3feb86ee8a02
