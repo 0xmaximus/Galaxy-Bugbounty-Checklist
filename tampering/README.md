@@ -13,3 +13,10 @@ I’ve been recently enjoying content discovery and appending unusual characters
 e.g
 site.com/admin 403
 site.com/admin; 200
+
+
+
+
+
+id[]=10
+id={10}
