@@ -1,4 +1,4 @@
-## TCP SYN FLOOD DOS ATTACK
+## 1) TCP SYN FLOOD DOS ATTACK
 DoS attacks are simple to carry out, can cause serious downtime, and aren’t always obvious. In a SYN flood attack, a malicious party exploits the TCP protocol 3-way handshake to quickly cause service and network disruptions, ultimately leading to an Denial of Service (DoS) Attack. These type of attacks can easily take admins by surprise and can become challenging to identify. Luckily tools like Wireshark makes it an easy process to capture and verify any suspicions of a DoS Attack.
 
 ### HOW TCP SYN FLOOD ATTACKS WORK
@@ -36,11 +36,14 @@ Let’s explain in detail the above command:
 We’re sending 15000 packets (-c 15000) at a size of 120 bytes (-d 120) each. We’re specifying that the SYN Flag (-S) should be enabled, with a TCP window size of 64 (-w 64). To direct the attack to our victum’s HTTP web server we specify port 80 (-p 80) and use the --flood flag to send packets as fast as possible. As you’d expect, the --rand-source flag generates spoofed IP addresses to disguise the real source and avoid detection but at the same time stop the victim’s SYN-ACK reply packets from reaching the attacker.
 
 
-## Slow HTTP GET/POST Vulnerability
+## 2) Slow HTTP GET/POST Vulnerability
+
+Slow HTTP attacks are denial-of-service (DoS) attacks that rely on the fact that the HTTP protocol, by design, requires a request to be completely received by the server before it is processed. If an HTTP request is not complete, or if the transfer rate is very low, the server keeps its resources busy waiting for the rest of the data. When the server’s concurrent connection pool reaches its maximum, this creates a denial of service. These attacks are problematic because they are easy to execute, i.e. they can be executed with minimal resources from the attacking machine.
+
 
 `slowhttptest -c 10000 -H -g -o slowhttp -i 1 -r 2000 -t GET -u https://example.com -x 2400 -p 3`
 
-## Big entity
+## 3) Big entity
 ```
 import requests
 import time
@@ -63,4 +66,4 @@ print(f'Time: {time.time() - start}')
 
 ```
 
-#Long password
+## 4) Long password
