@@ -40,7 +40,7 @@ We’re sending 15000 packets (-c 15000) at a size of 120 bytes (-d 120) each. W
 
 Slow HTTP attacks are denial-of-service (DoS) attacks that rely on the fact that the HTTP protocol, by design, requires a request to be completely received by the server before it is processed. If an HTTP request is not complete, or if the transfer rate is very low, the server keeps its resources busy waiting for the rest of the data. When the server’s concurrent connection pool reaches its maximum, this creates a denial of service. These attacks are problematic because they are easy to execute, i.e. they can be executed with minimal resources from the attacking machine.
 
-
+`sudo apt install slowhttptest`
 `slowhttptest -c 10000 -H -g -o slowhttp -i 1 -r 2000 -t GET -u https://example.com -x 2400 -p 3`
 
 ## 3) Big entity
