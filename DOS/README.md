@@ -106,8 +106,9 @@ print(f'Time: {time.time() - start}')
   - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
 
-### 3.2) Denial of service based on 
-
+  ### 3.3) Denial of service based on humongous long string in response:
+  
+  
 
   #### References:
   - https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
