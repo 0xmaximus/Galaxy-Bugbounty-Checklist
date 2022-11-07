@@ -70,12 +70,15 @@ print(f'Time: {time.time() - start}')
 ```
   If Server is processing our request for long time and doesn't give time out to us, it's vulnerable.
   
-  ### 3.2) Long password denial of service:
-  By sending a very long password (1.000.000 characters) it's possible to cause a denial a service attack on the server. This may lead to the website becoming    unavailable or unresponsive. Usually this problem is caused by a vulnerable password hashing implementation. When a long password is sent, the password hashing process will result in CPU and memory exhaustion.
-
-  This vulnerability was detected by sending passwords with various lengths and comparing the measured response times. Consult details for more information.
+  ### 3.2) Denial of service based comparing the measured response times and triggering a 5XX error:
+  This technique works for inputs thar are not getting back in response and attacker wants to Using server resources. Now most of programs dont accept this kind of bug.
+  By sending a very long string (100000 characters) it’s possible to cause a denial a service attack on the server. This may lead to the website becoming unavailable or unresponsive. Usually this problem is caused by a vulnerable string hashing implementation. When a long string is sent, the string hashing process will result in CPU and memory exhaustion.
+  #### This vulnerability must detect by sending strings with various lengths and comparing the measured response times. And you can confirm this vulnerbilty with 500 Internal Server Error.
   
-  you can find this at many places like :
+  The most likely field is the password because we know that it is mostly stored as a hash on the server.
+  By sending a very long password (1.000.000 characters) it's possible to cause a denial a service attack on the server. This may lead to the website becoming    unavailable or unresponsive. Usually this problem is caused by a vulnerable password hashing implementation. When a long password is sent, the password hashing process will result in CPU and memory exhaustion.
+    
+  you can find this at many places like:
   
   - #### profile-picture name (E.g with 3mb file name) [Payload Link](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt) /  [HackerOne Report](https://hackerone.com/reports/764434)
   - Username
@@ -103,9 +106,13 @@ print(f'Time: {time.time() - start}')
   - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
 
+
+
+
   #### References:
   - https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
   - https://shahjerry33.medium.com/long-string-dos-6ba8ceab3aa0
   - https://cwe.mitre.org/data/definitions/400.html
   - https://hackerone.com/reports/223854
   - https://hackerone.com/reports/764434
+  - https://hackerone.com/reports/768677
