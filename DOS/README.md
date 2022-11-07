@@ -70,7 +70,7 @@ print(f'Time: {time.time() - start}')
 ```
   If Server is processing our request for long time and doesn't give time out to us, it's vulnerable.
   
-  ### 3.2) Denial of service based comparing the measured response times and triggering a 5XX error:
+  ### 3.2) Denial of service based on comparing the measured response times and triggering a 5XX error:
   This technique works for inputs thar are not getting back in response and attacker wants to Using server resources. Now most of programs dont accept this kind of bug.
   By sending a very long string (100000 characters) it’s possible to cause a denial a service attack on the server. This may lead to the website becoming unavailable or unresponsive. Usually this problem is caused by a vulnerable string hashing implementation. When a long string is sent, the string hashing process will result in CPU and memory exhaustion.
   #### This vulnerability must detect by sending strings with various lengths and comparing the measured response times. And you can confirm this vulnerbilty with 500 Internal Server Error.
@@ -101,12 +101,12 @@ print(f'Time: {time.time() - start}')
   ![image](https://user-images.githubusercontent.com/63053441/200264593-ec1cfb7c-2f1b-4c5d-9701-65d2c3e0beed.png)
 
   #### NOTES : 
-  - Also you must check you can login in program with that long password or not! (Is that password accepted from server?)
+  - Also you must check that you can login in program with that long password or not! (Is that password accepted from server?)
   - Now many a times it happens that the signup page is not vulnerable to Long String Dos so you can try it while resetting your password.
   - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
 
-
+### 3.2) Denial of service based on 
 
 
   #### References:
@@ -116,3 +116,7 @@ print(f'Time: {time.time() - start}')
   - https://hackerone.com/reports/223854
   - https://hackerone.com/reports/764434
   - https://hackerone.com/reports/768677
+
+
+
+## 4) Pixel Flood Attack
