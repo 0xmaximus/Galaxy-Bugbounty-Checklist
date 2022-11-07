@@ -77,7 +77,7 @@ print(f'Time: {time.time() - start}')
   
   you can find this at many places like :
   
-  - #### profile-picture name (E.g with 3mb file name) [Payload link](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt) /  [HackerOne Report](https://hackerone.com/reports/764434)
+  - #### profile-picture name (E.g with 3mb file name) [Payload Link](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt) /  [HackerOne Report](https://hackerone.com/reports/764434)
   - Username
   - Firstname or Lastname
   - Email Address (create your own email using temp-mail)
