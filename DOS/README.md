@@ -76,7 +76,8 @@ print(f'Time: {time.time() - start}')
   This vulnerability was detected by sending passwords with various lengths and comparing the measured response times. Consult details for more information.
   
   you can find this at many places like :
-
+  
+  - profile-picture name (with 3mb file name) [Payload txt link]()
   - Username
   - Firstname or Lastname
   - Email Address (create your own email using temp-mail)
@@ -87,8 +88,6 @@ print(f'Time: {time.time() - start}')
   #### Remediation:
   The password hashing implementation must be fixed to limit the maximum length of accepted passwords.
   As in most systems there is a policy for the minimum number of characters, this limit should also exist for the maximum number of characters.
-
-  https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
   
   How to found this vulnerability :
 
@@ -98,14 +97,15 @@ print(f'Time: {time.time() - start}')
   
   ![image](https://user-images.githubusercontent.com/63053441/200264593-ec1cfb7c-2f1b-4c5d-9701-65d2c3e0beed.png)
 
-  Also you must check you can login in program with that long password or not! (Is that password accepted from server?)
-  Now many a times it happens that the signup page is not vulnerable to Long String Dos so you can try it while resetting your password.
+  #### NOTES : 
+  - Also you must check you can login in program with that long password or not! (Is that password accepted from server?)
+  - Now many a times it happens that the signup page is not vulnerable to Long String Dos so you can try it while resetting your password.
+  - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
 
-  #### NOTE : 
-  This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
-  
-  https://shahjerry33.medium.com/long-string-dos-6ba8ceab3aa0
-  
-  https://cwe.mitre.org/data/definitions/400.html
-  
+  #### References:
+  - https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
+  - https://shahjerry33.medium.com/long-string-dos-6ba8ceab3aa0
+  - https://cwe.mitre.org/data/definitions/400.html
+  - https://hackerone.com/reports/223854
+  - https://hackerone.com/reports/764434
