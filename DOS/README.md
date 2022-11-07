@@ -80,7 +80,6 @@ print(f'Time: {time.time() - start}')
     
   you can find this at many places like:
   
-  - #### profile-picture name (E.g with 3mb file name) [Payload Link](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt) /  [HackerOne Report](https://hackerone.com/reports/764434)
   - Username
   - Firstname or Lastname
   - Email Address (create your own email using temp-mail)
@@ -105,19 +104,46 @@ print(f'Time: {time.time() - start}')
   - Now many a times it happens that the signup page is not vulnerable to Long String Dos so you can try it while resetting your password.
   - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
+  HackerOne Reports:
+  https://hackerone.com/reports/223854
+  https://hackerone.com/reports/768677
 
   ### 3.3) Denial of service based on humongous long string in response:
-  This vulnerbility arise when input is not validating for limit of characters and this input is getting back in our responses
+  Checking the existence of this vulnerability is the same as the previous methods. You should be able to send a large data to the server, but with the difference that this time you are not only looking for error 500 or an increase in data processing time, rather you are looking for an endpoint that executes your data and returns it in response. If this data is visible to a larger number of users, the impact of the vulnerability increases.
+  
+  For example, if the file name you upload in a forum is several thousand characters long and when other users opened that particular page they are forced to request the file name from the server, you have found a vulnerability that leads to restrict the access to that page.
+  
+  As it is known in this [report](https://hackerone.com/reports/764434), by placing the payload in the file name, the hacker caused problems for other users who requested a query to load the profile picture and their browser crashed. [(Payload Link with 3mg Size)](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt)
+
+
+## 4) Pixel Flood Attack
+There are many ways to create a Denial-Of-Service attack but most of them end up as Informative or N/A. So their is an effective technique in which an image is uploaded in the profile photo that has the maximum pixel size of 64250px and gives you the time out, creating a DoS.
+
+The vulnerable applcation will load the pixel from the image file to the memory, and processing the image in order to get a new image file such as resize, rotate, blur, etc.  The attacker could manipulate the exif data in the image file such as change the image pixel to 64250x64250pixels. If the vulnerable application loaded the crafted image, it tries to allocate 4128062500 pixels into memory.
+
+How to find this vulnerability?
+
+1. Go to your target website and upload a profile photo
+2. The photo should have the pixel size of 64250*64250px (height and width)
+3. Select the file and upload it
+4. After uploading just check the response you’ll get a timeout error
+
+![image](https://user-images.githubusercontent.com/63053441/200397507-fc8b543f-a424-4014-b50a-75e5985f3288.png)
+
+Here the service is trying to convert the image once uploaded, by loading the 'whole image' into memory. It tries to allocate 4128062500 pixels into memory, flooding the memory and causing DoS.
+
+In some cases the website doesn’t allow you to upload the 64250*64250px images due to security, so you need to bypass it. Bypassing is very simple just replace the 64250*64250px value with 0xfafa*0xfafa this is equivalent to 64250 in Decimal number system and it’s binary format is 1111101011111010.
+
+You can make your own image here : https://www.resizepixel.com/ or download a crafted image from the attachment ([lottapixel.jpg]())
+
+  
+
   
 
   #### References:
   - https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
   - https://shahjerry33.medium.com/long-string-dos-6ba8ceab3aa0
   - https://cwe.mitre.org/data/definitions/400.html
-  - https://hackerone.com/reports/223854
-  - https://hackerone.com/reports/764434
-  - https://hackerone.com/reports/768677
+  - https://www.firewall.cx/
+  - https://shahjerry33.medium.com/dos-mr-pixel-flood-27605add29f2
 
-
-
-## 4) Pixel Flood Attack
