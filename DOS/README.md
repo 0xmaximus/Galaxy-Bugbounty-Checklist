@@ -88,8 +88,8 @@ print(f'Time: {time.time() - start}')
   - Comment Section
   
   #### Remediation:
-  The password hashing implementation must be fixed to limit the maximum length of accepted passwords.
-  As in most systems there is a policy for the minimum number of characters, this limit should also exist for the maximum number of characters.
+  - The password hashing implementation must be fixed to limit the maximum length of accepted passwords.
+  - As in most systems there is a policy for the minimum number of characters, this limit should also exist for the maximum number of characters.
   
   How to found this vulnerability :
 
@@ -119,7 +119,7 @@ print(f'Time: {time.time() - start}')
 ## 4) Pixel Flood Attack
 There are many ways to create a Denial-Of-Service attack but most of them end up as Informative or N/A. So their is an effective technique in which an image is uploaded in the profile photo that has the maximum pixel size of 64250px and gives you the time out, creating a DoS.
 
-The vulnerable applcation will load the pixel from the image file to the memory, and processing the image in order to get a new image file such as resize, rotate, blur, etc.  The attacker could manipulate the exif data in the image file such as change the image pixel to 64250x64250pixels. If the vulnerable application loaded the crafted image, it tries to allocate 4128062500 pixels into memory.
+The vulnerable applcation will load the pixel from the image file to the memory, and processing the image in order to get a new image file such as resize, rotate, blur, etc.  The attacker could manipulate the exif data in the image file such as change the image pixel to 64250 * 64250 pixels. If the vulnerable application loaded the crafted image, it tries to allocate 4128062500 pixels into memory.
 
 How to find this vulnerability?
 
@@ -132,14 +132,20 @@ How to find this vulnerability?
 
 Here the service is trying to convert the image once uploaded, by loading the 'whole image' into memory. It tries to allocate 4128062500 pixels into memory, flooding the memory and causing DoS.
 
-In some cases the website doesn’t allow you to upload the 64250*64250px images due to security, so you need to bypass it. Bypassing is very simple just replace the 64250*64250px value with 0xfafa*0xfafa this is equivalent to 64250 in Decimal number system and it’s binary format is 1111101011111010.
+Also you can confirm this vulnerability with two accounts
+1. From Account 1 try to send 64K * 64K resolution image
+2. Simultaneously from Account 2 try to send normal image (with different Internet Connection).
+3. You should see that the process of uploading with the account 2 is smooth (E.g got 502)
+
+
+In some cases the website doesn’t allow you to upload the 6425064250px images due to security, so you need to bypass it. Bypassing is very simple just replace the "64250\*64250px" value with 0xfafa * 0xfafa this is equivalent to 64250 in Decimal number system and it’s binary format is 1111101011111010.
 
 You can make your own image here : https://www.resizepixel.com/ or download a crafted image from the attachment ([lottapixel.jpg](https://user-images.githubusercontent.com/63053441/200401902-a1e5b996-39b0-40b3-b484-636e449d4f43.jpg))
 
 
   #### Remediation:
-  just set a maximum amount of pixels an image can have and check it before any processing.
-  instructing to run validations before starting the resizing or any process.
+  - Just set a maximum amount of pixels an image can have and check it before any processing.
+  - Instructing to run validations before starting the resizing or any process.
 
   HackerOne Reports:
   - https://hackerone.com/reports/390
@@ -153,4 +159,8 @@ You can make your own image here : https://www.resizepixel.com/ or download a cr
   - https://cwe.mitre.org/data/definitions/400.html
   - https://www.firewall.cx/
   - https://shahjerry33.medium.com/dos-mr-pixel-flood-27605add29f2
+
+https://hackerone.com/reports/819088
+
+https://hackerone.com/reports/975827
 
