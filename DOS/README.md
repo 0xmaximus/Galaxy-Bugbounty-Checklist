@@ -113,7 +113,7 @@ print(f'Time: {time.time() - start}')
   
   For example, if the file name you upload in a forum is several thousand characters long and when other users opened that particular page they are forced to request the file name from the server, you have found a vulnerability that leads to restrict the access to that page.
   
-  As it is known in this [report](https://hackerone.com/reports/764434), by placing the payload in the file name, the hacker caused problems for other users who requested a query to load the profile picture and their browser crashed. [(Payload Link with 3mg Size)](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt)
+  As it is known in this [report](https://hackerone.com/reports/764434), by placing the payload in the file name, the hacker caused problems for other users who requested a query to load the profile picture and their browser crashed. [Payload Link with 3mg Size](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt)
 
 
 ## 4) Pixel Flood Attack
@@ -136,8 +136,15 @@ In some cases the website doesn’t allow you to upload the 64250*64250px images
 
 You can make your own image here : https://www.resizepixel.com/ or download a crafted image from the attachment ([lottapixel.jpg](https://user-images.githubusercontent.com/63053441/200401902-a1e5b996-39b0-40b3-b484-636e449d4f43.jpg))
 
-  
 
+  #### Remediation:
+  just set a maximum amount of pixels an image can have and check it before any processing.
+  instructing to run validations before starting the resizing or any process.
+
+  HackerOne Reports:
+  - https://hackerone.com/reports/390
+  - https://hackerone.com/reports/400
+  - https://hackerone.com/reports/842462
   
 
   #### References:
