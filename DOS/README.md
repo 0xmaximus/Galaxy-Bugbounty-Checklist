@@ -47,7 +47,7 @@ Slow HTTP attacks are denial-of-service (DoS) attacks that rely on the fact that
 ## 3) Big entity
 
 Try sending a big request to the server. You can do it by send request with POST method to root with custom parameter or try in other fields like password or uploaders file name.
-  ### 3.1) Python Script to send large file (a.txt with 100mg) as parameter to root directory:
+  ### 3.1) Python Script to send large file (a.txt with 50mg) as parameter to root directory:
 ```
 import requests
 import time
@@ -77,7 +77,7 @@ print(f'Time: {time.time() - start}')
   
   you can find this at many places like :
   
-  - profile-picture name (with 3mb file name) [Payload txt link]()
+  - #### profile-picture name (E.g with 3mb file name) [Payload link](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt) /  [HackerOne Report](https://hackerone.com/reports/764434)
   - Username
   - Firstname or Lastname
   - Email Address (create your own email using temp-mail)
