@@ -54,6 +54,7 @@ Save file with this names and upload it in site
 pic.png;waitfor delay '0:0:5'-- 
 ```
 
+
 Refrence:
 
 https://twitter.com/GodfatherOrwa
