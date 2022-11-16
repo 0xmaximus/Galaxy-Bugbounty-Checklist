@@ -142,7 +142,7 @@ Also you can confirm this vulnerability with two accounts
 
 In some cases the website doesn’t allow you to upload the 6425064250px images due to security, so you need to bypass it. Bypassing is very simple just replace the "64250\*64250px" value with 0xfafa * 0xfafa this is equivalent to 64250 in Decimal number system and it’s binary format is 1111101011111010.
 
-You can make your own image here : https://www.resizepixel.com/ or download a crafted image from the attachment ([lottapixel.jpg](https://user-images.githubusercontent.com/63053441/200401902-a1e5b996-39b0-40b3-b484-636e449d4f43.jpg))
+You can make your own image here : https://www.resizepixel.com/ or download a crafted image from the attachment ([lottapixel.jpg](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/raw/main/DOS/lottapixel.jpg))
 
 
   #### Remediation:
