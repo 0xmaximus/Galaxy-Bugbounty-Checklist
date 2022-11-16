@@ -185,10 +185,48 @@
             </code>
             ```
         - - - -
+	### Upload tricks
+
+	- Use double extensions : `.jpg.php, .png.php5`
+	- Use reverse double extension (useful to exploit Apache misconfigurations where anything with extension .php, but not necessarily ending in .php will execute code): `.php.jpg`
+	- Random uppercase and lowercase : `.pHp, .pHP5, .PhAr`
+	- Null byte (works well against `pathinfo()`)
+	    * `.php%00.gif`
+	    * `.php\x00.gif`
+	    * `.php%00.png`
+	    * `.php\x00.png`
+	    * `.php%00.jpg`
+	    * `.php\x00.jpg`
+	- Special characters
+	    * Multiple dots : `file.php......` , in Windows when a file is created with dots at the end those will be removed.
+	    * Whitespace and new line characters
+		* `file.php%20`
+		* `file.php%0d%0a.jpg`
+		* `file.php%0a`
+	    * Right to Left Override (RTLO): `name.%E2%80%AEphp.jpg` will became `name.gpj.php`.
+	    * Slash: `file.php/`, `file.php.\`, `file.j\sp`, `file.j/sp`
+	    * Multiple special characters: `file.jsp/././././.`
+	- Mime type, change `Content-Type : application/x-php` or `Content-Type : application/octet-stream` to `Content-Type : image/gif`
+	    * `Content-Type : image/gif`
+	    * `Content-Type : image/png`
+	    * `Content-Type : image/jpeg`
+	    * Content-Type wordlist: [SecLists/content-type.txt](https://github.com/danielmiessler/SecLists/blob/master/Miscellaneous/web/content-type.txt)
+	    * Set the Content-Type twice: once for unallowed type and once for allowed.
+	- [Magic Bytes](https://en.wikipedia.org/wiki/List_of_file_signatures)
+	    * Sometimes applications identify file types based on their first signature bytes. Adding/replacing them in a file might trick the application.
+		* PNG: `\x89PNG\r\n\x1a\n\0\0\0\rIHDR\0\0\x03H\0\xs0\x03[`
+		* JPG: `\xff\xd8\xff`
+		* GIF: `GIF87a` OR `GIF8;`
+	    * Shell can also be added in the metadata
+	- Using NTFS alternate data stream (ADS) in Windows. In this case, a colon character ":" will be inserted after a forbidden extension and before a permitted one. As a result, an empty file with the forbidden extension will be created on the server (e.g. "`file.asax:.jpg`"). This file might be edited later using other techniques such as using its short filename. The "::$data" pattern can also be used to create non-empty files. Therefore, adding a dot character after this pattern might also be useful to bypass further restrictions (.e.g. "`file.asp::$data.`")
+
+
+	
+	
     - # Misc
         - [ ]  Uploading `file.js` & `file.config` (web.config)
-        - [ ]  Pixel flood attack using image
-        - [ ]  DoS with a large values name: `1234...99.png`
+        - [ ]  [Pixel flood attack using image](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/tree/main/DOS#4-pixel-floodimage-with-a-huge-pixelsframe-floodgif-with-a-huge-frame-attack)
+        - [ ]  [DoS with a large values name](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/tree/main/DOS#3-big-entity) `1234...99.png`
         - [ ]  Zip Slip
             - If a site accepts `.zip` file, upload `.php` and compress it into `.zip` and upload it. Now visit, `site.com/path?page=zip://path/file.zip%23rce.php`
         - [ ]  Image Shell
@@ -237,3 +275,4 @@
 ### References:
 * https://github.com/HolyBugx/HolyTips/blob/main/Checklist/File%20Upload.md
 * https://book.hacktricks.xyz/pentesting-web/file-upload
+* https://github.com/swisskyrepo/PayloadsAllTheThings/
