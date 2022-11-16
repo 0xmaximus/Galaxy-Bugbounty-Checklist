@@ -168,3 +168,8 @@ This information includes remote client IP's, session IDs, all request and respo
 If you find an SSRF vulnerability in an ASP application, try reading trace.axd file. It contains logs of HTTP requests, you can find sensitive information in there.
 
 * https://hackerone.com/reports/519418
+
+
+## Refrences:
+* https://book.hacktricks.xyz/
+* https://github.com/swisskyrepo/PayloadsAllTheThings
