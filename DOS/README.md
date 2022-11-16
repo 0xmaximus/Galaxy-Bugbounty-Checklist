@@ -105,8 +105,10 @@ print(f'Time: {time.time() - start}')
   - This DoS attack falls under the Application Level DoS and not Network Level DoS so you can report it. In some company’s policy of Out-Of-Scope, you’ll find “Denial of Service” which means Network Level DoS and not Application Level DoS. If the company has stated that “Any kind of DoS” is Out-Of-Scope that means you can’t report either of them.
 
   HackerOne Reports:
-  https://hackerone.com/reports/223854
-  https://hackerone.com/reports/768677
+  
+  - https://hackerone.com/reports/223854
+  - https://hackerone.com/reports/768677
+  - https://hackerone.com/reports/819088
 
   ### 3.3) Denial of service based on humongous long string in response:
   Checking the existence of this vulnerability is the same as the previous methods. You should be able to send a large data to the server, but with the difference that this time you are not only looking for error 500 or an increase in data processing time, rather you are looking for an endpoint that executes your data and returns it in response. If this data is visible to a larger number of users, the impact of the vulnerability increases.
@@ -116,7 +118,7 @@ print(f'Time: {time.time() - start}')
   As it is known in this [report](https://hackerone.com/reports/764434), by placing the payload in the file name, the hacker caused problems for other users who requested a query to load the profile picture and their browser crashed. [Payload Link with 3mg Size](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/DOS/payload.txt)
 
 
-## 4) Pixel Flood Attack
+## 4) Pixel Flood(image with a huge pixels)/Frame flood(GIF with a huge frame) Attack
 There are many ways to create a Denial-Of-Service attack but most of them end up as Informative or N/A. So their is an effective technique in which an image is uploaded in the profile photo that has the maximum pixel size of 64250px and gives you the time out, creating a DoS.
 
 The vulnerable applcation will load the pixel from the image file to the memory, and processing the image in order to get a new image file such as resize, rotate, blur, etc.  The attacker could manipulate the exif data in the image file such as change the image pixel to 64250 * 64250 pixels. If the vulnerable application loaded the crafted image, it tries to allocate 4128062500 pixels into memory.
@@ -152,6 +154,24 @@ You can make your own image here : https://www.resizepixel.com/ or download a cr
   - https://hackerone.com/reports/400
   - https://hackerone.com/reports/842462
   
+  
+  
+## 5) Cookie Bomb
+   
+```
+https://target.com/index.php?param1=xxxxxxxxxxxxxx
+```
+After input "xxxxxxxxxxxxxx" as a value of param1, check your cookies. If there is cookies the value is "xxxxxxxxxxxxxxxxxxxxxx" it means the website is vulnerable
+
+2. Try input a very long payload to form. For example using very long password or using very long email
+```
+POST /register HTTP/1.1
+Host: target.com
+...
+
+username=victim&password=aaaaaaaaaaaaaaa
+```
+
 
   #### References:
   - https://www.acunetix.com/vulnerabilities/web/long-password-denial-of-service/
@@ -160,7 +180,4 @@ You can make your own image here : https://www.resizepixel.com/ or download a cr
   - https://www.firewall.cx/
   - https://shahjerry33.medium.com/dos-mr-pixel-flood-27605add29f2
 
-https://hackerone.com/reports/819088
-
-https://hackerone.com/reports/975827
 
