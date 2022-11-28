@@ -6,11 +6,11 @@
 From SSRF, various things can be done, such as:
 
 - Local/Remote Port Scan
-- Local File Read (using file://)
+- Reading a Local File (using file://)
 - Sensitive Data Disclosure (Like Server Ip Behind The WAF)
-- Interact with internal apps/service/network
+- Interacting with internal apps/service/network(For Example: http://localhost/admin or http://192.168.1.100/admin)
 - RCE by chaining services on internal network
-- Read Metadata Cloud (AWS, Azure, Google Cloud, Digital Ocean, etc)
+- Reading Metadata Cloud (AWS, Azure, Google Cloud, Digital Ocean, etc)
 - Reflected XSS/CSRF
 
 ## Lab Setup
