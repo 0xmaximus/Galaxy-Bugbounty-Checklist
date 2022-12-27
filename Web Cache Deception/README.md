@@ -36,7 +36,7 @@ It manipulates the URL path by which the cache server is forced to store, and th
 <br>
 <p align="center">
 <img
-src="https://github.com/cyspad/image-host-repo/blob/df7a043dab3e5f665491455fbc67a959c400c307/Web-Cache-Deception%20Scanner.jpg"
+src="https://github.com/cyspad/my-share-image-repo/blob/04ab3d0d2e241ca48c44d9d650fec25686b7a9e9/Web-Cache-Deception%20Scanner.jpg"
 >
 </p>
 
