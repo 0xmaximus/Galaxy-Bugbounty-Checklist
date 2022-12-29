@@ -13,16 +13,17 @@ Occasionally, sensitive information might be carelessly leaked to users who are 
 
 - Hunting with Burp Suite
 
-   - Install Logger++ Extention 
+   - Install [Logger++](https://github.com/PortSwigger/logger-plus-plus) Extention 
    - Paste the ``` Response.Body == /(?i)([a-z0-9]+){0,}((_|-){0,}(\\s){0,})(APIkey|secret|accesstoken|apiToken|localhost)(\\s){0,}(=|:|is|>){1,}/ AND Response.Headers CONTAINS "application/javascript" ``` Regex in Filter Filed
-<br>   
+<br> 
+
 ## Backup Files - Fuzzing
 
-- FFUF and cyspadSniper Wordlist
+- [FFUF](https://github.com/ffuf/ffuf) and cyspadSniper Wordlist
   - ffuf -u https://target.com/FUZZ -w cyspadSniper.txt -mc 200
 
+- [FUZZULI](https://github.com/musana/fuzzuli)
+  - echo https://target.com|fuzzuli -mt all all -w 32 -ex .rar,.zip,.tar,.gzip,.backup,.bak -p
 
 ### References:
 * https://portswigger.net/web-security/information-disclosure
-
-<em>Happy Hunting ;) </em>
