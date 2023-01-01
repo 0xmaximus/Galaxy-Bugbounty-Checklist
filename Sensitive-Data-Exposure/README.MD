@@ -23,7 +23,7 @@ Occasionally, sensitive information might be carelessly leaked to users who are 
   - ffuf -u https://target.com/FUZZ -w cyspadSniper.txt -mc 200
 
 - [FUZZULI](https://github.com/musana/fuzzuli)
-  - echo https://target.com|fuzzuli -mt all all -w 32 -ex .rar,.zip,.tar,.gzip,.backup,.bak -p
+  - echo https://target.com|fuzzuli -mt all -w 32 -ex .rar,.zip,.tar,.gzip,.backup,.bak -p
 
 ### References:
 * https://portswigger.net/web-security/information-disclosure
