@@ -13,6 +13,7 @@ Here I will try my best to mention all common security misconfigurations for Wor
 * [Sensitive files exposed](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#sensitive-files-exposed)
 * [Bypass 403](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#Bypass-403)
 * [Enumerating plugins](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/blob/main/WordPress/README.md#enumerating-plugins)
+* [Find wordpress origin IP](https://github.com/0xmaximus/Galaxy-Bugbounty-Checklist/edit/main/WordPress/README.md#find-origin-ip-in-wordpress)
 
 
 # Wordpress Detection
@@ -322,7 +323,14 @@ You cant find some common exploits here:</br>
 https://github.com/Mad-robot/wordpress-exploits
 
 
-# Reference
+
+# Find Origin Ip in wordpress
+If wordpress is protected with wafs, you can brute force `GET /wp-json/wp/v2/media/§1§` to find real ip.
+
+In some cases you will got 200 OK in GET /wp-json/wp/v2/media/1123 and you find real IP is routing.
+
+
+# References
 Twitters:</br>
 @jae_hak99
 @minometidji
