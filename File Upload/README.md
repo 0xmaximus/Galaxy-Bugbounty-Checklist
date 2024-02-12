@@ -1,4 +1,4 @@
-
+-  Upload Function:
     - # Extensions Impact
         - `ASP`, `ASPX`, `PHP5`, `PHP`, `PHP3`: Webshell, RCE
         - `SVG`: Stored XSS, SSRF, XXE
