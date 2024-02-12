@@ -312,13 +312,13 @@ Setup !
 
 - - - -
 ## References:
-https://mf-akbar.medium.com/exploiting-server-side-request-forgery-ssrf-vulnerability-faeb7ddf5d0e <br></br>
-https://medium.com/@pflash0x0punk/ssrf-via-ffmpeg-hls-processing-a04e0288a8c5 <br></br>
-https://vickieli.medium.com/ <br></br>
-https://cobalt.io/blog/a-pentesters-guide-to-server-side-request-forgery-ssrf <br></br>
-https://medium.com/@madrobot/ssrf-server-side-request-forgery-types-and-ways-to-exploit-it-part-1-29d034c27978 <br></br>
-https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery#ssrf-exploitation-via-url-scheme <br></br>
-https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery <br></br>
-https://www.fatalerrors.org/a/ssrf-using-dict-and-gopher-to-hang-redis.html <br></br>
-https://appcheck-ng.com/server-side-request-forgery-ssrf/# <br></br>
-https://portswigger.net/web-security/ssrf <br></br>
+- https://mf-akbar.medium.com/exploiting-server-side-request-forgery-ssrf-vulnerability-faeb7ddf5d0e
+- https://medium.com/@pflash0x0punk/ssrf-via-ffmpeg-hls-processing-a04e0288a8c5
+- https://vickieli.medium.com/
+- https://cobalt.io/blog/a-pentesters-guide-to-server-side-request-forgery-ssrf
+- https://medium.com/@madrobot/ssrf-server-side-request-forgery-types-and-ways-to-exploit-it-part-1-29d034c27978
+- https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery#ssrf-exploitation-via-url-scheme
+- https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery
+- https://www.fatalerrors.org/a/ssrf-using-dict-and-gopher-to-hang-redis.html
+- https://appcheck-ng.com/server-side-request-forgery-ssrf/#
+- https://portswigger.net/web-security/ssrf
