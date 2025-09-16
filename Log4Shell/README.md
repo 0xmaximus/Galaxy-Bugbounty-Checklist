@@ -373,5 +373,5 @@ X-XSRF-TOKEN
 https://github.com/fullhunt/log4j-scan 
 
 
-## Refrence 
+## Reference 
 https://twitter.com/nav1n0x/status/1600916773171335179
