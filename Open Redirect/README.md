@@ -94,7 +94,8 @@ https://example.com/login?return=https%3A%2F%2Fexample.com%2F%3Freturnurl%3Dhttp
 \\yoururl.com 
 //yoururl.com 
 //theirsite@yoursite.com 
-/\/yoursite.com 
+/\/yoursite.com
+/\/\yoursite.com
 https://yoursite.com%3F.theirsite.com/ 
 https://yoursite.com%2523.theirsite.com/ 
 https://yoursite?c=.theirsite.com/ (use # \ also) 
